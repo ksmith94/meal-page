@@ -3,7 +3,7 @@ import Ingredient from './Ingredient';
 type Recipe = {
   id: number;
   title: string;
-  image: string;
+  image?: string;
   ingredients: Ingredient[];
   servings: number;
   prepTime: number;
