@@ -1,22 +1,6 @@
 import React from 'react';
+import Recipe from '../types/Recipe';
 
-type RecipeIngredient = {
-  name: string;
-  amount: number;
-  unit: string;
-  preparation?: string;
-};
-
-type Recipe = {
-  id: number;
-  title: string;
-  image: string;
-  ingredients: RecipeIngredient[];
-  servings: number;
-  prepTime: number;
-  cookTime: number;
-  instructions: string[];
-};
 
 const demoRecipe: Recipe = {
   id: 1,

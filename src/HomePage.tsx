@@ -1,4 +1,5 @@
 import React from 'react';
+import DailyRecipe from './components/DailyRecipe';
 
 function Home(): JSX.Element {
   return (
@@ -9,6 +10,7 @@ function Home(): JSX.Element {
         <button type="submit">Search</button>
       </form>
       <button>Login</button>
+      <DailyRecipe />
     </div>
   );
 }
