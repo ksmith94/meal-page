@@ -1,6 +1,6 @@
 import React from 'react';
 import DailyRecipe from './components/DailyRecipe';
-import { spaghettiCarbonara } from './DemoData/DemoRecipes';
+import { spaghettiCarbonara, spicyGoatCheesePasta } from './DemoData/DemoRecipes';
 
 function Home(): JSX.Element {
   return (
@@ -11,7 +11,7 @@ function Home(): JSX.Element {
         <button type="submit">Search</button>
       </form>
       <button>Login</button>
-      <DailyRecipe {...spaghettiCarbonara} />
+      <DailyRecipe {...spicyGoatCheesePasta} />
     </div>
   );
 }

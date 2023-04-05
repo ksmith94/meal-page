@@ -1,5 +1,4 @@
 import React from 'react';
-import { spaghettiCarbonara } from '../DemoData/DemoRecipes';
 import Recipe from '../types/Recipe';
 
 

@@ -1,4 +1,3 @@
-import { createHook } from "async_hooks";
 import Recipe from "../types/Recipe";
 
 export const spaghettiCarbonara: Recipe = {
@@ -23,7 +22,7 @@ export const spicyGoatCheesePasta: Recipe = {
   title: 'Spicy Goat Cheese Pasta w/ Peas',
   ingredients: [
     { name: 'olive oil', amount: 'as needed' },
-    { name: 'shallot', amount: 2, preparation: 'diced' },
+    { name: 'shallots', amount: 2, preparation: 'diced' },
     { name: 'garlic', amount: 3, unit: 'cloves', preparation: 'minced' },
     { name: 'hot italian sausage', amount: 1, unit: 'lb' },
     { name: 'tomato paste', amount: 2, unit: 'tbsp' },

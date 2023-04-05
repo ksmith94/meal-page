@@ -1,0 +1,13 @@
+.daily-recipe {
+  margin: 24px;
+  width: 640px;
+  height: 60px;
+}
+
+.daily-recipe-details {
+  background: hsl(239deg 79% 39%);
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+  height: 480px;
+}
