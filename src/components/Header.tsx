@@ -25,9 +25,12 @@ const AppHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  width: 100%;
   padding: 0 16px;
+  margin-bottom: 24px;
   background-color: hsl(193deg 75% 85%);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
 `
 
 const HeaderMenu = styled.ul`

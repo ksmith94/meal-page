@@ -1,19 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 import DailyRecipe from './components/DailyRecipe';
 import { spicyGoatCheesePasta } from './DemoData/DemoRecipes';
 
 function Home(): JSX.Element {
   return (
-    <div>
+    <Wrapper>
       <p>Get inspired and find new recipes to try at home.</p>
-      <form>
-        <input type="text" placeholder="Search for a recipe..." />
-        <button type="submit">Search</button>
-      </form>
       <button>Login</button>
       <DailyRecipe {...spicyGoatCheesePasta} />
-    </div>
+    </Wrapper>
+
   );
 }
+
+const Wrapper = styled.div`
+  margin-top: 112px;
+`
 
 export default Home;

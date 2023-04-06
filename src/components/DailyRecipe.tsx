@@ -67,7 +67,7 @@ const RecipePreview = styled.div`
   color: white;
   padding: 16px;
   border-radius: 10px;
-  height: 480px;
+  max-height: 480px;
 `
 
 export default DailyRecipe;
