@@ -1,20 +1,56 @@
 import React from 'react';
+import styled from 'styled-components/macro';
 import './Header.css';
+import SearchBar from './Search';
 
 function Header(): JSX.Element {
   return (
-    <header className="header">
-      <h1 className="header-title">Kevin's Kitchen</h1>
+    <AppHeader>
+      <HeaderTitle>Kevin's Kitchen</HeaderTitle>
       <nav className='header-links'>
-        <ul className='header-link-list'>
-          <li className='header-link'><a href='/'>Home</a></li>
-          <li className='header-link'><a href="/recipes">Recipes</a></li>
-          <li className='header-link'><a href="/favorites">Favorites</a></li>
-          <li className='header-link'><a href="/about">About</a></li>
-        </ul>
+        <HeaderMenu>
+          <li className='header-link'><MenuLinks href='/'>Home</MenuLinks></li>
+          <li className='header-link'><MenuLinks href="/recipes">Recipes</MenuLinks></li>
+          <li className='header-link'><MenuLinks href="/favorites">Favorites</MenuLinks></li>
+          <li className='header-link'><MenuLinks href="/about">About</MenuLinks></li>
+        </HeaderMenu>
       </nav>
-    </header>
+      <SearchBar />
+    </AppHeader>
   );
 }
+
+const AppHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 0 16px;
+  background-color: hsl(193deg 75% 85%);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+`
+
+const HeaderMenu = styled.ul`
+  list-style: none;
+  margin-right: 4px;
+  padding: 8px;
+`
+
+const MenuLinks = styled.a`
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;;
+  }
+`
+
+const HeaderTitle = styled.h1`
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+`
 
 export default Header;

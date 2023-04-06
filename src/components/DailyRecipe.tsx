@@ -2,7 +2,7 @@ import React from 'react';
 import Ingredient from '../types/Ingredient';
 import Recipe from '../types/Recipe';
 import './DailyRecipe.css';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 function DailyRecipe(props: Recipe): JSX.Element | null {
   const date: Date = new Date();
@@ -30,7 +30,7 @@ function DailyRecipe(props: Recipe): JSX.Element | null {
   return (
     <Wrapper>
       <h2 className='daily-recipe-date'>Your recipe for {getDateDisplay(date)}</h2>
-      <RecipeDetails>
+      <RecipePreview>
         <img src={props.image} alt={props.title} />
         <h3 className='daily-recipe-name'>{props.title}</h3>
         <p className='daily-recipe-servings'>Servings: {props.servings}</p>
@@ -51,7 +51,7 @@ function DailyRecipe(props: Recipe): JSX.Element | null {
             ))}
           </ol>
         </p>
-      </RecipeDetails>
+      </RecipePreview>
     </Wrapper>
   )
 }
@@ -62,7 +62,7 @@ const Wrapper = styled.div`
   height: 60px;
 `
 
-const RecipeDetails = styled.div`
+const RecipePreview = styled.div`
   background: hsl(239deg 79% 39%);
   color: white;
   padding: 16px;

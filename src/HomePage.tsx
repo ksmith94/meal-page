@@ -1,6 +1,6 @@
 import React from 'react';
 import DailyRecipe from './components/DailyRecipe';
-import { spaghettiCarbonara, spicyGoatCheesePasta } from './DemoData/DemoRecipes';
+import { spicyGoatCheesePasta } from './DemoData/DemoRecipes';
 
 function Home(): JSX.Element {
   return (
