@@ -1,7 +1,6 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
 
 function SearchBar() {
   const [isVisible, setIsVisible] = useState(false);

@@ -29,7 +29,7 @@ const AppHeader = styled.header`
   padding: 0 16px;
   margin-bottom: 24px;
   background-color: hsl(193deg 75% 85%);
-  position: sticky;
+  position: fixed;
   top: 0;
 `
 
