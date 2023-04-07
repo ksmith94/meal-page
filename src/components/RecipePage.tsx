@@ -1,10 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import Recipe from '../types/Recipe';
 
 
 function RecipePage(recipe: Recipe) {
   return (
-    <div>
+    <Wrapper>
       <h2>{recipe.title}</h2>
       <img src={recipe.image} alt={recipe.title} />
       <p>Servings: {recipe.servings}</p>
@@ -29,8 +30,12 @@ function RecipePage(recipe: Recipe) {
           ))}
         </ol>
       </p>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  margin-top: 112px;
+`
 
 export default RecipePage;
