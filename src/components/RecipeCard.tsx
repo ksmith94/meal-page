@@ -15,7 +15,7 @@ function RecipeCard(recipe: Recipe): JSX.Element {
         </StyledDiv>
       </StyledSpan>
         <StyledParagraph>Ingredients:</StyledParagraph>
-        <ul>
+        <IngredientList>
           {recipe.ingredients.map((ingredient) => (
             <li key={ingredient.name}>
               {
@@ -23,18 +23,17 @@ function RecipeCard(recipe: Recipe): JSX.Element {
                 `${ingredient.amount} ${ingredient.unit} ${ingredient.name}, ${ingredient.preparation}` :
                 `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`
               }
-
             </li>
           ))}
-        </ul>
+        </IngredientList>
         <StyledParagraph>Steps:</StyledParagraph>
-        <ol>
+        <Steps>
           {recipe.instructions.map((instruction, i) => (
             <li key={i}>
               {instruction}
             </li>
           ))}
-        </ol>
+        </Steps>
     </Wrapper>
   )
 };
@@ -69,6 +68,16 @@ const StyledSpan = styled.span`
 
 const StyledDiv = styled.div`
   margin: 8px;
+`
+
+const IngredientList = styled.ul`
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 4px;
+`
+
+const Steps = styled.ol`
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 4px;
 `
 
 export default RecipeCard;
