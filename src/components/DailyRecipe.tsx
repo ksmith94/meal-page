@@ -4,7 +4,6 @@ import Recipe from '../types/Recipe';
 import './DailyRecipe.css';
 import styled from 'styled-components/macro';
 import RecipePreview from './RecipePreview';
-import { spicyGoatCheesePasta } from '../DemoData/DemoRecipes';
 
 function DailyRecipe(props: Recipe): JSX.Element | null {
   const date: Date = new Date();

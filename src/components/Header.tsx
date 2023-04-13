@@ -1,6 +1,7 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import './Header.css';
 import Menu from './Menu';
@@ -19,7 +20,7 @@ function Header(): JSX.Element {
         <StyledIcon icon={faBars} />
         {isOpen && <Menu />}
       </div>
-      <HeaderTitle>Kevin's Kitchen</HeaderTitle>
+      <HeaderLink to="/"><HeaderTitle>Kevin's Kitchen</HeaderTitle></HeaderLink>
       <SearchBar />
     </AppHeader>
   );
@@ -63,6 +64,11 @@ const HeaderTitle = styled.h1`
   font-weight: 600;
   color: #333333;
   text-align: center;
+  text-decoration: none;
+`
+
+const HeaderLink = styled(Link)`
+  text-decoration: none;
 `
 
 export default Header;

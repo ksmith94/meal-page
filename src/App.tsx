@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import RecipePage from './components/RecipePage';
-import { spaghettiCarbonara, spicyGoatCheesePasta } from './DemoData/DemoRecipes';
+import recipes from './DemoData/DemoRecipes';
 import Home from './HomePage';
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
       }
       <Routes>
         <Route path="" element={<Home />} />
-        <Route path="/recipes" element={<RecipePage {...spaghettiCarbonara} />} />
-        <Route path = "/recipe/:id" element={<RecipePage {...spicyGoatCheesePasta}/>} />
+        <Route path="/recipes" element={<RecipePage {...recipes[0]} />} />
+        <Route path = "/recipe/:id" element={<RecipePage {...recipes[0]}/>} />
       </Routes>
     </Router>
   );
