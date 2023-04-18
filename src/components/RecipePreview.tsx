@@ -46,10 +46,11 @@ function RecipePreview(props: Recipe): JSX.Element {
 
 const Preview = styled.div`
   background: rgb(21, 24, 178);
-    color: white;
-    padding: 16px;
-    border-radius: 10px;
-    max-height: 480px
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+  max-height: 480px;
+  max-width: 480px;
 `
 
 const RecipeLink = styled(Link)`

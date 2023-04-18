@@ -63,7 +63,7 @@ const foulMdammas: Recipe = {
     {name: 'cumin', amount: 1, unit: 'tsp'},
     {name: 'salt/pepper', amount: 'as needed'},
     {name: 'lemon juice', amount: 1, unit: 'tbsp'},
-    {name: 'pita bread or fresh veggies', amount: 'to serve as a side:'}
+    {name: 'pita bread or fresh veggies', amount: 'to serve as a side'}
   ],
   servings: 2,
   prepTime: 10,
@@ -77,5 +77,5 @@ const foulMdammas: Recipe = {
   ]
 };
 
-const recipes = [spaghettiCarbonara, spicyGoatCheesePasta, foulMdammas];
+const recipes: Recipe[] = [spaghettiCarbonara, spicyGoatCheesePasta, foulMdammas];
 export default recipes;

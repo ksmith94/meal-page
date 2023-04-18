@@ -1,4 +1,4 @@
-import { faBowlFood, faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faHouse, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -13,6 +13,9 @@ function Menu(): JSX.Element {
         </li>
         <li>
           <StyledLink to="/recipes"><FontAwesomeIcon icon={faBowlFood} />Recipes</StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/myrecipes"><FontAwesomeIcon icon={faStar} />My Recipes</StyledLink>
         </li>
       </ul>
     </div>
