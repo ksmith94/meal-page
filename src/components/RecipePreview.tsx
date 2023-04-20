@@ -77,7 +77,7 @@ const IngredientList = styled.ul`
   margin-left: -16px;
 `
 
-const Stats = styled.span`
+export const Stats = styled.span`
   margin-top: 8px;
   border-top: 1px solid white;
   display: flex;

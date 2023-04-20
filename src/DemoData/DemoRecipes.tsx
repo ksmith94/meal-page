@@ -1,5 +1,6 @@
 import Recipe from "../types/Recipe";
 
+
 const spaghettiCarbonara: Recipe = {
   id: 1,
   title: 'Spaghetti Carbonara',
