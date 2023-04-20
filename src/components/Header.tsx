@@ -6,13 +6,27 @@ import styled from 'styled-components/macro';
 import './Header.css';
 import Menu from './Menu';
 import SearchBar from './Search';
+import axios from 'axios';
+
 
 function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
+  const [recipes, setRecipes] = useState([]);
 
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
   };
+
+  function handleSearch(query: String) {
+    axios.get(`https://api.spoonacular.com/recipes/search?query=${query}&apiKey=${process.env.SPOONACULAR_API_KEY}`)
+      .then(res => {
+        console.log(res.data.results);
+        setRecipes(res.data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
   return (
     <AppHeader>
@@ -21,7 +35,7 @@ function Header(): JSX.Element {
         {isOpen && <Menu />}
       </div>
       <HeaderLink to="/"><HeaderTitle>Kevin's Kitchen</HeaderTitle></HeaderLink>
-      <SearchBar />
+      <SearchBar onSearch={handleSearch}/>
     </AppHeader>
   );
 }

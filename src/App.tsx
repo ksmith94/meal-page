@@ -7,7 +7,9 @@ import RecipePage from './components/RecipePage';
 import recipes from './DemoData/DemoRecipes';
 import Home from './HomePage';
 
+
 function App() {
+  console.log(process.env.REACT_APP_SPOONACULAR_API_KEY);
   return (
     <Router>
       <Header />

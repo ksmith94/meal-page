@@ -27,14 +27,14 @@ function RecipePreview(props: Recipe): JSX.Element {
       <h3 className='recipe-preview-name'><RecipeLink to={`/recipe/${props.id}`}>{props.title}</RecipeLink></h3>
       <Details className="preview-details">
         <ImageLink className="recipe-image-link" to={`/recipe/${props.id}`}><ImagePreview className="preview-image" src={props.image} alt={props.title} /></ImageLink>
-        <p className='recipe-preview-ingrdients'>
+        <div className='recipe-preview-ingrdients'>
           Ingredients
           <IngredientList className='recipe-preview-ingredient-list'>
-            {props.ingredients.map((ingredient) => (
-              <li className='recipe-preview-ingredient'>{parseIngredient(ingredient)}</li>
+            {props.ingredients.map((ingredient, index) => (
+              <li className='recipe-preview-ingredient' key={index}>{parseIngredient(ingredient)}</li>
             ))}
           </IngredientList>
-        </p>
+        </div>
       </Details>
       <Stats className="recipe-preview-stats">
         <p className='recipe-preview-servings'>Servings: {props.servings}</p>
