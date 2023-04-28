@@ -6,36 +6,34 @@ import styled from 'styled-components/macro';
 import './Header.css';
 import Menu from './Menu';
 import SearchBar from './Search';
-import axios from 'axios';
 
 
 function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
-  const [recipes, setRecipes] = useState([]);
 
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
   };
 
-  function handleSearch(query: String) {
-    axios.get(`https://api.spoonacular.com/recipes/search?query=${query}&apiKey=${process.env.SPOONACULAR_API_KEY}`)
-      .then(res => {
-        console.log(res.data.results);
-        setRecipes(res.data.results);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
 
   return (
     <AppHeader>
-      <div className='menu-icon' onClick={handleMenuClick}>
+      <div 
+        role='button'
+        className='menu-icon' 
+        onClick={handleMenuClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleMenuClick
+          }
+        }}
+        tabIndex={0}
+      >
         <StyledIcon icon={faBars} />
         {isOpen && <Menu />}
       </div>
-      <HeaderLink to="/"><HeaderTitle>Kevin's Kitchen</HeaderTitle></HeaderLink>
-      <SearchBar onSearch={handleSearch}/>
+      <HeaderLink to="/"><HeaderTitle>Kevin&apos;s Kitchen</HeaderTitle></HeaderLink>
+      <SearchBar />
     </AppHeader>
   );
 }
@@ -57,20 +55,20 @@ const AppHeader = styled.header`
   top: 0;
 `
 
-const HeaderMenu = styled.ul`
-  list-style: none;
-  margin-right: 4px;
-  padding: 8px;
-`
+// const HeaderMenu = styled.ul`
+//   list-style: none;
+//   margin-right: 4px;
+//   padding: 8px;
+// `
 
-const MenuLinks = styled.a`
-  color: black;
-  text-decoration: none;
+// const MenuLinks = styled.a`
+//   color: black;
+//   text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;;
-  }
-`
+//   &:hover {
+//     text-decoration: underline;;
+//   }
+// `
 
 const HeaderTitle = styled.h1`
   margin: 0;

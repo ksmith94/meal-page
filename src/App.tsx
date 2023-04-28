@@ -9,7 +9,6 @@ import Home from './HomePage';
 
 
 function App() {
-  console.log(process.env.REACT_APP_SPOONACULAR_API_KEY);
   return (
     <Router>
       <Header />
@@ -18,6 +17,7 @@ function App() {
         <Route path="/recipes" element={<RecipePage {...recipes[0]} />} />
         <Route path="/recipe/:id" element={<RecipePage {...recipes[0]}/>} />
         <Route path="/myrecipes" element={<MyRecipes {...recipes} />} />
+        {/* <Route path="/search" element={<SearchResults />} /> */}
       </Routes>
     </Router>
   );
