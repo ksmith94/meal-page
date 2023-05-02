@@ -1,7 +1,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type onSearchFn = (arg0: string) => void;
 
@@ -36,14 +36,13 @@ function SearchBar() {
   }
 
 
-  async function handleSubmit() {
-    const res = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}&query=${term}`
-    );
-    const json = await res.json();
-    console.log(json);
-
-    navigate('/search');
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    
+    if (term.trim() === '') {
+      return;
+    }
+    navigate(`/search?query=${term}`);
   }
 
   return (
@@ -51,7 +50,7 @@ function SearchBar() {
       {isVisible ? (
         <form onSubmit={(e) => {
           e.preventDefault()
-          handleSubmit()
+          handleSubmit(e);
         }}>
           <input
             id="search-bar"
@@ -63,7 +62,9 @@ function SearchBar() {
             ref={inputRef}
             onBlur={handleInputBlur}
           />
-          <button type='submit'>Search</button>
+          <Link to={`/search/${term}`}>
+            <button type='submit'>Search</button>
+          </Link>
         </form>
       ) : (
         <FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleToggleSearch} />

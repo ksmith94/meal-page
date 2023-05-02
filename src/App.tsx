@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import MyRecipes from './components/MyRecipes';
 import RecipePage from './components/RecipePage';
+import SearchResults from './components/SearchResults';
 import recipes from './DemoData/DemoRecipes';
 import Home from './HomePage';
 
@@ -17,7 +18,7 @@ function App() {
         <Route path="/recipes" element={<RecipePage {...recipes[0]} />} />
         <Route path="/recipe/:id" element={<RecipePage {...recipes[0]}/>} />
         <Route path="/myrecipes" element={<MyRecipes {...recipes} />} />
-        {/* <Route path="/search" element={<SearchResults />} /> */}
+        <Route path="/search/:term" element={<SearchResults />} />
       </Routes>
     </Router>
   );
