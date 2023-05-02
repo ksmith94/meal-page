@@ -1,5 +1,5 @@
 import React from 'react';
-import Ingredient from '../types/Ingredient';
+// import Ingredient from '../types/Ingredient';
 import Recipe from '../types/Recipe';
 import './DailyRecipe.css';
 import styled from 'styled-components/macro';

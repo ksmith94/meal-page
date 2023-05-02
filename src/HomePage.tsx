@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import DailyRecipe from './components/DailyRecipe';
-import RecipePreview from './components/RecipePreview';
+// import RecipePreview from './components/RecipePreview';
 import recipes from './DemoData/DemoRecipes';
 
 function Home(): JSX.Element {
   return (
     <Wrapper>
-      <p>Get inspired and find new recipes to try at home.</p>
-      <button>Login</button>
+      <Para>Get inspired and find new recipes to try at home.</Para>
       <DailyRecipe {...recipes[0]} />
     </Wrapper>
 
@@ -17,6 +16,10 @@ function Home(): JSX.Element {
 
 const Wrapper = styled.div`
   margin-top: 112px;
+`
+
+const Para = styled.p`
+  margin: 24px;
 `
 
 export default Home;
