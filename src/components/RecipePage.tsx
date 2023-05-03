@@ -1,5 +1,5 @@
-import React, { /*useEffect,*/ useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { /*useEffect, useState*/ } from 'react';
+// import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 // import recipes from '../DemoData/DemoRecipes';
 // import Recipe from '../types/Recipe';
@@ -7,10 +7,9 @@ import styled from 'styled-components';
 
 
 function RecipePage() {
-  const [recipe, setRecipe] = useState();
-  const { id } = useParams();
+  // const [recipe, setRecipe] = useState();
+  // const { id } = useParams();
 
-  console.log(id, process.env.REACT_APP_SPOONACULAR_API_KEY);
 
   // function getRecipe(idString: string | undefined, recipes: Recipe[]): Recipe {
   //   if (!idString) return recipes[0];
@@ -34,7 +33,7 @@ function RecipePage() {
   //   fetchRecipe(id);
   // }), [id];
 
-  console.log(recipe);
+  // console.log(recipe);
 
   return (
     <Wrapper>

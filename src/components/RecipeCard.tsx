@@ -17,12 +17,8 @@ function RecipeCard(recipe: Recipe): JSX.Element {
         <StyledParagraph>Ingredients:</StyledParagraph>
         <IngredientList>
           {recipe.ingredients.map((ingredient) => (
-            <li key={ingredient.name}>
-              {
-                ingredient.preparation ?
-                `${ingredient.amount} ${ingredient.unit} ${ingredient.name}, ${ingredient.preparation}` :
-                `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`
-              }
+            <li key={ingredient}>
+              {ingredient}
             </li>
           ))}
         </IngredientList>
