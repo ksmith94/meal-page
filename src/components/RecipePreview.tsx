@@ -1,26 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Ingredient from "../types/Ingredient";
 import Recipe from "../types/Recipe";
 
 function RecipePreview(props: Recipe): JSX.Element {
 
-  function parseIngredient(ingredient: Ingredient) {
-    let output = '';
-    if (ingredient.preparation && ingredient.unit) {
-      output = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}, ${ingredient.preparation}`;
-    } else if (ingredient.preparation && !ingredient.unit) {
-      output = `${ingredient.amount} ${ingredient.name}, ${ingredient.preparation}`;
-    } else if (!ingredient.preparation && ingredient.unit) {
-      output = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`
-    } else {
-      output = `${ingredient.name}, ${ingredient.amount}`;
-    }
+  // function parseIngredient(ingredient: Ingredient) {
+  //   let output = '';
+  //   if (ingredient.preparation && ingredient.unit) {
+  //     output = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}, ${ingredient.preparation}`;
+  //   } else if (ingredient.preparation && !ingredient.unit) {
+  //     output = `${ingredient.amount} ${ingredient.name}, ${ingredient.preparation}`;
+  //   } else if (!ingredient.preparation && ingredient.unit) {
+  //     output = `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`
+  //   } else {
+  //     output = `${ingredient.name}, ${ingredient.amount}`;
+  //   }
 
-    if (ingredient.optional) output += ' (optional)';
-    return output;
-  }
+  //   if (ingredient.optional) output += ' (optional)';
+  //   return output;
+  // }
 
   return (
     <Preview>
@@ -31,7 +30,7 @@ function RecipePreview(props: Recipe): JSX.Element {
           Ingredients
           <IngredientList className='recipe-preview-ingredient-list'>
             {props.ingredients.map((ingredient, index) => (
-              <li className='recipe-preview-ingredient' key={index}>{parseIngredient(ingredient)}</li>
+              <li className='recipe-preview-ingredient' key={index}>{ingredient}</li>
             ))}
           </IngredientList>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Result from "../types/Result";
 
 function SearchResults(): JSX.Element {
@@ -25,10 +25,10 @@ function SearchResults(): JSX.Element {
       {
         recipes ?
         recipes.results.map((recipe) => (
-          <div key={recipe.title}>
+          <Link to={`/recipe/${recipe.id}`}key={recipe.title}>
             <img src={recipe.image} alt={recipe.title} />
             <p>{recipe.title}</p>
-          </div>
+          </Link>
         )) : 
         <p>No recipes for {term}</p>
       }

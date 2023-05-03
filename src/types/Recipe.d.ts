@@ -4,7 +4,7 @@ type Recipe = {
   id: number;
   title: string;
   image?: string;
-  ingredients: Ingredient[];
+  ingredients: string[];
   servings: number;
   prepTime: number;
   cookTime: number;
