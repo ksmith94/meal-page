@@ -22,11 +22,11 @@ function RecipePreview(props: Recipe): JSX.Element {
   // }
 
   return (
-    <Preview>
-      <Image src={props.image} alt={props.title} />
-      <Title>{props.title}</Title>
-      <Details>{props.prepTime + props.cookTime}</Details>
-      <Details>{props.servings === 1 ? props.servings + ' serving' : props.servings + ' servings'}</Details>
+    <Preview className="recipe-preview">
+      <Image src={props.image} alt={props.title} className="recipe-image" />
+      <Title className="recipe-title">{props.title}</Title>
+      <Details className="recipe-time">{props.prepTime + props.cookTime} minutes</Details>
+      <Details className="recipe-servings">{props.servings === 1 ? props.servings + ' serving' : props.servings + ' servings'}</Details>
     </Preview>
     // <Preview>
     //   <h3 className='recipe-preview-name'><RecipeLink to={`/recipe/${props.id}`}>{props.title}</RecipeLink></h3>
@@ -50,12 +50,14 @@ function RecipePreview(props: Recipe): JSX.Element {
 }
 
 const Preview = styled.div`
-  background: hsl(0, 0%, 70%);
+  background: hsl(0, 0%, 83%);
   color: black;
   padding-bottom: 8px;
   border-radius: 10px;
-  height: fit-content;
-  max-width: 240px;
+  height: 180px;
+  width: 180px;
+  margin-right: 8px;
+  overflow: auto;
 `
 
 // const RecipeLink = styled(Link)`
@@ -65,6 +67,9 @@ const Preview = styled.div`
 
 const Title = styled.h3`
   padding-left: 8px;
+  font-size: 20px;
+  line-height: 1.2rem;
+  margin-bottom: 4px;
 `
 
 // const Details = styled.div`
@@ -76,10 +81,14 @@ const Title = styled.h3`
 const Details = styled.p`
   padding-left: 8px;
   margin-top: -4px;
+  color: hsl(0, 0%, 25%);
+  font-size: 12px;
 `
 
 const Image = styled.img`
   border-radius: 10px 10px 0 0;
+  width: 100%;
+  height: 67%;
 `
 
 // const ImageLink = styled(Link)`

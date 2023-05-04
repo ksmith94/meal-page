@@ -81,6 +81,7 @@ export const foulMdammas: Recipe = {
 export const chickenSoup: Recipe = {
   id: 3,
   title: 'Chicken Noodle Soup',
+  image: 'https://tastesbetterfromscratch.com/wp-content/uploads/2017/10/Chicken-Noodle-Soup-2-300x300.jpg',
   ingredients: [
     '2 tbsp olive oil',
     '1 lb bone in, skin on chicken thighs',
@@ -109,6 +110,7 @@ export const chickenSoup: Recipe = {
 export const pastaBurroAlici: Recipe = {
   id: 4,
   title: 'Pasta Burro e Alici',
+  image: 'https://www.seriouseats.com/thmb/9HihhYeHwnvdF_mmt3ULEXJ7hj4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__2021__02__20210218-burro-e-alici-sasha-marx-11-d30e7f3153414346a24169785e1ffe41.jpg',
   ingredients: [
     '1 tbsp olive oil',
     '1/2 cup panko breadcrumbs',
@@ -135,6 +137,7 @@ export const pastaBurroAlici: Recipe = {
 export const riceAndBeans: Recipe = {
   id: 5,
   title: 'Rice and Beans',
+  image: 'https://www.thespruceeats.com/thmb/tuOIk_GoUS-P5C3XmZw-5vJ6sys=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/black-beans-and-white-rice-2138039-hero-01-f36d434e0c614bcb83d37754b9686150.jpg',
   ingredients: [
     '2 tbsp neutral oil',
     '1 onion diced',
@@ -162,7 +165,8 @@ export const riceAndBeans: Recipe = {
 
 export const shakshuka: Recipe = {
   id: 6,
-  title: 'Harissa',
+  title: 'Shakshuka',
+  image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Shakshuka_by_Calliopejen1.jpg/440px-Shakshuka_by_Calliopejen1.jpg',
   ingredients: [
     '3 tbsp olive oil',
     '1 medium onion, sliced',
@@ -184,5 +188,24 @@ export const shakshuka: Recipe = {
     'Add the garlic and cook until fragrant, about 30 seconds. Add the paprika and cumin and cook stirring until fragrant, another 30 seconds.',
     'Add the tomatoes and stir to combine. Bring to a simmer and let simmer for aobut 10 minutes. Season to taste with salt and pepper. Add the cilantor or parsley.',
     'Using a large spoon, make small wells throughout the shakshuka to put the eggs in. Crack the eggs directly into the sauce, and spoon a little bit of it over to slightly cover the eggs whites. Season with a little salt, cover the pan, and cook until the whites are just set and the yolks are still runny, about 5-8 minutes.'
+  ]
+}
+
+export const macAndCheese: Recipe = {
+  id: 7,
+  title: 'Stovetop Mac and Cheese',
+  image: 'https://www.seriouseats.com/thmb/dut4-XGKpABuTNn3rXlq1unGm5E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__images__2015__10__20151006-stovetop-mac-and-cheese-food-lab-kenji-beauty--2e3e356179d742f8a2871d1d81d2d757.jpg',
+  ingredients: [
+    '8 oz macaroni',
+    '8 oz cheese, grated',
+    '6 oz evaporated milk, plus more as needed',
+    'salt and pepper to taste'
+  ],
+  servings: 2,
+  prepTime: 0,
+  cookTime: 10,
+  instructions: [
+    'Put the macaroni in a large skillet and add water to just cover the pasta. Bring to a boil over medium heat and cook according to package instructions, adding more water as necessary if pan dries out.',
+    'When the pasta is just shy of finished, add the evaporated milk and stir to combine. Add the grated cheese and stir until you have a gooey cheese suace. Continue cooking until the pasta is done and the sauce is at your desired consistency. If it reduces too much and starts to tighten up, add more evaporated milk to loosen it.'
   ]
 }
