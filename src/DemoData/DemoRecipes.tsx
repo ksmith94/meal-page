@@ -209,3 +209,14 @@ export const macAndCheese: Recipe = {
     'When the pasta is just shy of finished, add the evaporated milk and stir to combine. Add the grated cheese and stir until you have a gooey cheese suace. Continue cooking until the pasta is done and the sauce is at your desired consistency. If it reduces too much and starts to tighten up, add more evaporated milk to loosen it.'
   ]
 }
+
+export const recipes: Recipe[] = [
+  spaghettiCarbonara,
+  spicyGoatCheesePasta,
+  foulMdammas,
+  chickenSoup,
+  pastaBurroAlici,
+  riceAndBeans,
+  shakshuka,
+  macAndCheese
+]

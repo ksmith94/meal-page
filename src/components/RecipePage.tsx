@@ -1,26 +1,25 @@
 import React, { /*useEffect, useState*/ } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-// import recipes from '../DemoData/DemoRecipes';
+import { recipes } from '../DemoData/DemoRecipes';
 // import Recipe from '../types/Recipe';
-// import RecipeCard from './RecipeCard';
+import RecipeCard from './RecipeCard';
 
 
 function RecipePage() {
   // const [recipe, setRecipe] = useState();
-  // const { id } = useParams();
+  const { id } = useParams();
 
+  function getRecipe(id?: string) {
+    if (!id) {
+      return undefined;
+    } else {
+      const [recipe] = recipes.filter((recipe) => recipe.id === parseInt(id));
+      return recipe;
+    }
+  }
 
-  // function getRecipe(idString: string | undefined, recipes: Recipe[]): Recipe {
-  //   if (!idString) return recipes[0];
-  //   const recipeId = parseInt(idString);
-  //   for (const recipe of recipes) {
-  //     if (recipe.id === recipeId) return recipe;
-  //   }
-  //   return recipes[0];
-  // }
-
-  // const currentRecipe = getRecipe(id, recipes);
+  const recipe = getRecipe(id);
 
   // async function fetchRecipe(id?: string) {
   //     const res = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`);
@@ -37,11 +36,11 @@ function RecipePage() {
 
   return (
     <Wrapper>
-      {/* {
-        id ?
-        <RecipeCard {...currentRecipe} /> :
+      {
+        recipe ?
+        <RecipeCard {...recipe} /> :
         <p>Invalid recipe ID</p>
-      } */}
+      }
     </Wrapper>
   );
 };

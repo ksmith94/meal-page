@@ -1,16 +1,18 @@
-import Recipe from "../types/Recipe";
+import { recipes } from "../DemoData/DemoRecipes";
 import React from "react";
 import styled from "styled-components";
 import RecipeListItem from "./RecipeListItem";
+import RecipePreview from "./RecipePreview";
 
-function MyRecipes(recipes: Recipe[]): JSX.Element {
-  const recipeList = [recipes[0], recipes[1], recipes[2]];
+function MyRecipes(): JSX.Element {
+
   return (
     <Wrapper className="my-recipes">
       <h2 className="my-recipes-title">My Recipes</h2>
       <RecipesDisplay className="my-recipes-display">
-        {recipeList.map((recipe) => (
-           <PreviewWrapper><RecipeListItem {...recipe} /></PreviewWrapper>
+        {recipes.map((recipe, i) => (
+          <RecipePreview key={i} {...recipe} />
+          //  <PreviewWrapper><RecipeListItem {...recipe} /></PreviewWrapper>
         ))}
       </RecipesDisplay>
     </Wrapper>
@@ -25,6 +27,9 @@ const Wrapper = styled.div`
 const RecipesDisplay = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  margin: 0 8px;
+  overflow: auto;
 `
 
 const PreviewWrapper = styled.div`

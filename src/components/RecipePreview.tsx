@@ -1,4 +1,7 @@
+import { faCameraAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Recipe from "../types/Recipe";
@@ -23,11 +26,20 @@ function RecipePreview(props: Recipe): JSX.Element {
 
   return (
     <Preview className="recipe-preview">
-      <Image src={props.image} alt={props.title} className="recipe-image" />
-      <Title className="recipe-title">{props.title}</Title>
+      <Link to={`/recipe/${props.id}`}>
+        {
+          props.image ? 
+          <Image src={props.image} alt={props.title} className="recipe-image" /> :
+          <StyledIcon icon={faCameraAlt} />
+        }
+      </Link>
+      <TitleLink to={`/recipe/${props.id}`}>
+        <Title className="recipe-title">{props.title}</Title>
+      </TitleLink>
       <Details className="recipe-time">{props.prepTime + props.cookTime} minutes</Details>
       <Details className="recipe-servings">{props.servings === 1 ? props.servings + ' serving' : props.servings + ' servings'}</Details>
     </Preview>
+
     // <Preview>
     //   <h3 className='recipe-preview-name'><RecipeLink to={`/recipe/${props.id}`}>{props.title}</RecipeLink></h3>
     //   <Details className="preview-details">
@@ -60,16 +72,34 @@ const Preview = styled.div`
   overflow: auto;
 `
 
-// const RecipeLink = styled(Link)`
-//   color: white;
-//   text-decoration: none;
-// `
+const StyledIcon = styled(FontAwesomeIcon)`
+  border-radius: 10px 10px 0 0;
+  width: 80%;
+  height: 67%;
+`
 
 const Title = styled.h3`
   padding-left: 8px;
   font-size: 20px;
   line-height: 1.2rem;
   margin-bottom: 4px;
+  color: hsl(0, 0%, 0%);
+`
+
+const Image = styled.img`
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  height: 67%;
+`
+
+const TitleLink = styled(Link)`
+  text-decoration: none;
+  color: hsl(0, 0%, 0%);
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+  }
 `
 
 // const Details = styled.div`
@@ -85,11 +115,6 @@ const Details = styled.p`
   font-size: 12px;
 `
 
-const Image = styled.img`
-  border-radius: 10px 10px 0 0;
-  width: 100%;
-  height: 67%;
-`
 
 // const ImageLink = styled(Link)`
 //   display: flex;
