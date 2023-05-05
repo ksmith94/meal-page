@@ -36,7 +36,7 @@ function WeeklyMealPlan(): JSX.Element {
 
   return (
     <div>
-      <h2>Your meals for the week of {week}</h2>
+      <Week>Your meals for the week of {week}</Week>
       <WeekCal className="weekly-plan">
         {
           days.map((day, index) => (
@@ -61,11 +61,18 @@ const WeekCal = styled.div`
   overflow: auto;
 `
 
+const Week = styled.h2`
+  margin-left: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: hsl(0, 0%, 30%);
+`
+
 const Weekday = styled.div`
-  padding-left: 8px;
+  padding-right: 8px;
 `
 
 const Day = styled.h3`
   font-size: 20px;
-  color: hsl(0, 0%, 25%);
+  color: hsl(0, 0%, 30%);
 `

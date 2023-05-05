@@ -111,7 +111,7 @@ const TitleLink = styled(Link)`
 export const Details = styled.p`
   padding-left: 8px;
   margin-top: -4px;
-  color: hsl(0, 0%, 25%);
+  color: hsl(0, 0%, 30%);
   font-size: 12px;
 `
 
