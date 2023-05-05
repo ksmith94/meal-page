@@ -21,17 +21,33 @@ function WeeklyMealPlan(): JSX.Element {
     ['Saturday', shakshuka]
   ];
 
+  function getWeek() {
+    const sundayDate = new Date();
+    const saturdayDate = new Date();
+    const day = sundayDate.getDay();
+    const sundayDiff = sundayDate.getDate() - day;
+    const saturdayDiff = saturdayDate.getDate() + 7 - day;
+    const sunday = new Date(sundayDate.setDate(sundayDiff)).toLocaleDateString('us-EN', {month: 'long', day: 'numeric'});
+    const saturday = new Date(saturdayDate.setDate(saturdayDiff)).toLocaleDateString('us-EN', {month: 'long', day: 'numeric'});
+    return sunday + ' – ' + saturday;
+  }
+
+  const week = getWeek();
+
   return (
-    <WeekCal className="weekly-plan">
-      {
-        days.map((day, index) => (
-          <Weekday className="weekday" key={index}>
-            <Day>{day[0]}</Day>
-            <RecipePreview {...day[1]} />
-          </Weekday>
-        ))
-      }
-    </WeekCal>
+    <div>
+      <h2>Your meals for the week of {week}</h2>
+      <WeekCal className="weekly-plan">
+        {
+          days.map((day, index) => (
+            <Weekday className="weekday" key={index}>
+              <Day>{day[0]}</Day>
+              <RecipePreview {...day[1]} />
+            </Weekday>
+          ))
+        }
+      </WeekCal>
+    </div>
   )
 }
 
@@ -49,7 +65,7 @@ const Weekday = styled.div`
   padding-left: 8px;
 `
 
-const Day = styled.h2`
+const Day = styled.h3`
   font-size: 20px;
   color: hsl(0, 0%, 25%);
 `

@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 function RecipeListItem(props: Recipe): JSX.Element {
   return (
-    <Preview className="my-recipes">
-      {props.image ? <img src={props.image} alt={props.title}/> : <p>No image :(</p>}
+    <Preview className="recipes-list-item">
+      {props.image ? <ImageDisplay src={props.image} alt={props.title}/> : <p>No image :(</p>}
       <h3>{props.title}</h3>
       <Details className='recipe-preview-servings'>Servings: {props.servings}</Details>
       <Details className='recipe-preview-time'>Total Time: {props.prepTime + props.cookTime} minutes</Details>
@@ -21,15 +21,10 @@ const Preview = styled.div`
   color: black;
   padding-bottom: 8px;
   border-radius: 10px;
-  height: 180px;
-  width: 30%;
-  margin-right: 16px;
-  margin-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
 `
 
-// const ImageDisplay = styled.img`
-//   height: 50%;
-//   width: 100%;
-// `
+const ImageDisplay = styled.img`
+  height: 50%;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+`
