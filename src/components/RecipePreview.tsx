@@ -108,7 +108,7 @@ const TitleLink = styled(Link)`
 //     justify-content: space-between;
 // `
 
-const Details = styled.p`
+export const Details = styled.p`
   padding-left: 8px;
   margin-top: -4px;
   color: hsl(0, 0%, 25%);
@@ -129,11 +129,11 @@ const Details = styled.p`
 //   margin-left: -16px;
 // `
 
-export const Stats = styled.span`
-  margin-top: 8px;
-  border-top: 1px solid white;
-  display: flex;
-  justify-content: space-around;
-`
+// export const Stats = styled.span`
+//   margin-top: 8px;
+//   border-top: 1px solid white;
+//   display: flex;
+//   justify-content: space-around;
+// `
 
 export default RecipePreview;
