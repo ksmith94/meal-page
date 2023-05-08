@@ -3,12 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
-type onSearchFn = (arg0: string) => void;
-
-interface SearchProps {
-  onSearch: onSearchFn;
-}
-
 
 function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null);
