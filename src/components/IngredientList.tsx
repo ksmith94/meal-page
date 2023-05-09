@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { macAndCheese, chickenSoup, pastaBurroAlici, riceAndBeans, shakshuka } from "../DemoData/DemoRecipes";
 
 
