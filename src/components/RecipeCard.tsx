@@ -6,10 +6,12 @@ import ingredients from "../DemoData/Ingredients";
 import Instructions from "../types/Instructions";
 import Ingredient from "../types/Ingredient";
 import instructions from "../DemoData/Instructions";
+import IngredientList from "./IngredientList";
 
 function RecipeCard(recipe: Recipe): JSX.Element {
 
   const recipeId = recipe.id;
+  console.log(recipeId)
   const ingredientList = getIngredients(recipeId, recipeIngredients, ingredients);
   const instructionList = getInstructions(recipeId, instructions);
 
@@ -25,12 +27,12 @@ function RecipeCard(recipe: Recipe): JSX.Element {
         </StyledDiv>
       </StyledSpan>
         <StyledParagraph>Ingredients:</StyledParagraph>
-        <IngredientList>
-          {ingredientList.map((ingredient, i) => (
+        <IngredientList {...recipe.id}>
+          {/* {ingredientList.map((ingredient, i) => (
             <li key={i}>
               {ingredient.name}
             </li>
-          ))}
+          ))} */}
         </IngredientList>
         <StyledParagraph>Steps:</StyledParagraph>
         <Steps>
@@ -60,6 +62,7 @@ function getIngredients(recipeId: number, recipeIngredients: RecipeIngredient[][
       if (ingredient.id === ingredientId) ingredientList.push(ingredient);
     }
   }
+
 
   return ingredientList;
 }
@@ -106,10 +109,10 @@ const StyledDiv = styled.div`
   margin: 8px;
 `
 
-const IngredientList = styled.ul`
+/* const IngredientList = styled.ul`
   font-family: Arial, Helvetica, sans-serif;
   padding-bottom: 4px;
-`
+` */
 
 const Steps = styled.ol`
   font-family: Arial, Helvetica, sans-serif;

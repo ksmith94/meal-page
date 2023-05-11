@@ -1,54 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import ingredients from "../DemoData/Ingredients";
 import recipeIngredients from "../DemoData/RecipeIngredients";
-import GroceryList from "../types/GroceryList";
+import RecipeIngredient from "../types/RecipeIngredient";
 
-function IngredientList(): JSX.Element {
+function IngredientList(recipeId: number): JSX.Element {
+  console.log(recipeId)
+  const ingredientsList = getIngredients(recipeId, recipeIngredients, ingredients);
+  const recipeIngredientList = getRecipeIngredients(recipeId, recipeIngredients);
 
-  const groceryList: GroceryList = {};
-
-  for (let i = 0; i < recipeIngredients.length; i++) {
-    for (let j = 0; j < recipeIngredients[i].length; j++) {
-      const ingredientId = recipeIngredients[i][j].ingredientId;
-      const ingredient = getIngredient(ingredientId, ingredients);
-
-      if (ingredient === undefined) {
-        continue;
-      }
-
-      if (ingredient in groceryList) {
-        groceryList[ingredient]++;
-      } else {
-        groceryList[ingredient] = 1;
-      }
-    }
-  }
-
-  const [checkedItems, setChecked] = useState(new Array(ingredients.length).fill(false));
-
-  function toggleCheck(index: number) {
-    const newCheckedItems = [...checkedItems];
-    newCheckedItems[index] = !newCheckedItems[index];
-    setChecked(newCheckedItems);
-  }
+  console.log(recipeIngredientList);
+  console.log(ingredientsList)
 
   return (
     <div>
       <ul>
         {
-          Object.keys(groceryList).map((ingredient, i) => (
-            <li key={i}>
-              <label>
-                <input
-                  type='checkbox'
-                  checked={checkedItems[i]}
-                  onChange={() => toggleCheck(i)}
-                />
-                <span style={{textDecoration: checkedItems[i] ? 'line-through' : 'none'}}>
-                  {`${groceryList[ingredient]} ${ingredient}`}
-                </span>
-              </label>
-            </li>
+          ingredientsList.map((ingredient, i) => (
+            <li key={i}>{ingredient.name}</li>
           ))
         }
       </ul>
@@ -56,12 +24,37 @@ function IngredientList(): JSX.Element {
   )
 }
 
-function getIngredient(id: number, ingredients: Ingredient[]) {
-  for (const ingredient of ingredients) {
-    if (ingredient.id === id) {
-      return ingredient.name;
+function getIngredients(recipeId: number, recipeIngredients: RecipeIngredient[][], ingredients: Ingredient[]): Ingredient[] {
+  let recipe: RecipeIngredient[] = []
+  const ingredientList = [];
+
+  for (const recipeIngredient of recipeIngredients) {
+    if (recipeIngredient[0].recipeId === recipeId) {
+      recipe = [...recipeIngredient];
+    }
+  }
+
+  for (const recipeIngredient of recipe) {
+    const ingredientId = recipeIngredient.ingredientId;
+    for (const ingredient of ingredients) {
+      if (ingredient.id === ingredientId) ingredientList.push(ingredient);
+    }
+  }
+
+  return ingredientList;
+}
+
+function getRecipeIngredients(recipeId: number, recipeIngredients: RecipeIngredient[][]) {
+  for (let i = 0; i < recipeIngredients.length; i++) {
+    if (recipeId === recipeIngredients[i][0].recipeId) {
+      return recipeIngredients[i];
     }
   }
 }
+
+function getQuantitiesAndUnits(recipeId: number, ingredients: Ingredient[], recipeIngredients: RecipeIngredient[]) {
+
+}
+
 
 export default IngredientList;

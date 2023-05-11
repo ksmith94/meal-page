@@ -37,5 +37,6 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
-  }
+  },
+  "parser": "@babel/eslint-parser"
 }

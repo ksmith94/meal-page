@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
-import IngredientList from './components/IngredientList';
+import IngredientList from './components/GroceryList';
 import MyRecipes from './components/MyRecipes';
 import RecipePage from './components/RecipePage';
 import SearchResults from './components/SearchResults';

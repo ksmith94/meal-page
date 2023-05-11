@@ -50,7 +50,7 @@ const AppHeader = styled.header`
   width: 100%;
   padding: 0 16px;
   margin-bottom: 24px;
-  background-color: hsl(193deg 75% 85%);
+  background-color: hsl(217 55% 65%);
   position: fixed;
   top: 0;
 `
@@ -74,7 +74,7 @@ const HeaderTitle = styled.h1`
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  color: #333333;
+  color: hsl(217 55% 25%);
   text-align: center;
   text-decoration: none;
 `
