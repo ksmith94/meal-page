@@ -1,47 +1,34 @@
 import React from "react";
 import ingredients from "../DemoData/Ingredients";
+import preparations from "../DemoData/Preparations";
+import quantities from "../DemoData/Quantities";
+// import quantities from "../DemoData/Quantities";
 import recipeIngredients from "../DemoData/RecipeIngredients";
-import RecipeIngredient from "../types/RecipeIngredient";
+import units from "../DemoData/Units";
+import IngredientDisplayItem from "../types/IngredientDisplayItem";
+import { getIngredientsForDisplay, parseIngredients } from "./utils";
+// import RecipeIngredient from "../types/RecipeIngredient";
 
-function IngredientList(recipeId: number): JSX.Element {
-  console.log(recipeId)
-  const ingredientsList = getIngredients(recipeId, recipeIngredients, ingredients);
+function IngredientList(recipe: Recipe): JSX.Element {
+  // console.log(recipe);
+  const recipeId = recipe.id;
+  // const ingredientsList = getIngredients(recipeId, recipeIngredients, ingredients);
   const recipeIngredientList = getRecipeIngredients(recipeId, recipeIngredients);
-
-  console.log(recipeIngredientList);
-  console.log(ingredientsList)
+  const ingredientDisplay = getIngredientsForDisplay(quantities, ingredients, units, preparations, recipeIngredientList);
+  // console.log(ingredientsList);
+  console.log(ingredientDisplay);
 
   return (
     <div>
       <ul>
         {
-          ingredientsList.map((ingredient, i) => (
-            <li key={i}>{ingredient.name}</li>
+          ingredientDisplay.map((ingredient, i) => (
+            <li key={i}>{parseIngredients(ingredient)}</li>
           ))
         }
       </ul>
     </div>
   )
-}
-
-function getIngredients(recipeId: number, recipeIngredients: RecipeIngredient[][], ingredients: Ingredient[]): Ingredient[] {
-  let recipe: RecipeIngredient[] = []
-  const ingredientList = [];
-
-  for (const recipeIngredient of recipeIngredients) {
-    if (recipeIngredient[0].recipeId === recipeId) {
-      recipe = [...recipeIngredient];
-    }
-  }
-
-  for (const recipeIngredient of recipe) {
-    const ingredientId = recipeIngredient.ingredientId;
-    for (const ingredient of ingredients) {
-      if (ingredient.id === ingredientId) ingredientList.push(ingredient);
-    }
-  }
-
-  return ingredientList;
 }
 
 function getRecipeIngredients(recipeId: number, recipeIngredients: RecipeIngredient[][]) {
@@ -51,10 +38,5 @@ function getRecipeIngredients(recipeId: number, recipeIngredients: RecipeIngredi
     }
   }
 }
-
-function getQuantitiesAndUnits(recipeId: number, ingredients: Ingredient[], recipeIngredients: RecipeIngredient[]) {
-
-}
-
 
 export default IngredientList;

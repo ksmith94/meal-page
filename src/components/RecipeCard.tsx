@@ -27,12 +27,7 @@ function RecipeCard(recipe: Recipe): JSX.Element {
         </StyledDiv>
       </StyledSpan>
         <StyledParagraph>Ingredients:</StyledParagraph>
-        <IngredientList {...recipe.id}>
-          {/* {ingredientList.map((ingredient, i) => (
-            <li key={i}>
-              {ingredient.name}
-            </li>
-          ))} */}
+        <IngredientList {...recipe}>
         </IngredientList>
         <StyledParagraph>Steps:</StyledParagraph>
         <Steps>

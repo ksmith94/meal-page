@@ -74,3 +74,5 @@ const units: Unit[] = [
   pounds,
   ounces
 ]
+
+export default units;

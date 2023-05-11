@@ -56,3 +56,5 @@ const quantities: Quantity[] = [
   half,
   two
 ]
+
+export default quantities;

@@ -56,3 +56,5 @@ const preparations: Preparation[] = [
   thinSliced,
   diced
 ]
+
+export default preparations;
