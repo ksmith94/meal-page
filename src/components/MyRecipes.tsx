@@ -1,4 +1,4 @@
-import { recipes } from "../DemoData/DemoRecipes";
+import recipes from "../DemoData/Recipes";
 import React from "react";
 import styled from "styled-components";
 import RecipeListItem from "./RecipeListItem";

@@ -1,49 +1,51 @@
-const shredded = {
+import Preparation from "../types/Preparation"
+
+const shredded: Preparation = {
   preparationId: 0,
   preparation: 'shredded'
 }
 
-const cooked = {
+const cooked: Preparation = {
   preparationId: 8,
   preparation: 'cooked'
 }
 
-const crushed = {
+const crushed: Preparation = {
   preparationId: 7,
   preparation: 'crushed'
 }
 
-const zested = {
+const zested: Preparation = {
   preparationId: 6,
   preparation: 'zested'
 }
 
-const juiced = {
+const juiced: Preparation = {
   preparationId: 5,
   preparation: 'juiced'
 }
 
-const chopped = {
+const chopped: Preparation = {
   preparationId: 4,
   preparation: 'chopped'
 }
 
-const minced = {
+const minced: Preparation = {
   preparationId: 3,
   preparation: 'minced'
 }
 
-const thinSliced = {
+const thinSliced: Preparation = {
   preparationId: 2,
   preparation: 'thinly sliced'
 }
 
-const diced = {
+const diced: Preparation = {
   preparationId: 1,
   preparation: 'diced'
 }
 
-const preparations = [
+const preparations: Preparation[] = [
   shredded,
   cooked,
   crushed,

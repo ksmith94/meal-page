@@ -1,24 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { 
-    chickenSoup,
-    pastaBurroAlici,
-    riceAndBeans,
-    shakshuka,
-    macAndCheese
-  } from "../DemoData/DemoRecipes";
+import recipes from "../DemoData/Recipes";
 import Recipe from "../types/Recipe";
 import RecipePreview from "./RecipePreview";
 
 function WeeklyMealPlan(): JSX.Element {
   const days: [string, Recipe][] = [
-    ['Sunday', macAndCheese], 
-    ['Monday', chickenSoup], 
-    ['Tuesday', pastaBurroAlici], 
-    ['Wednesday', riceAndBeans], 
-    ['Thursday', riceAndBeans], 
-    ['Friday', shakshuka], 
-    ['Saturday', shakshuka]
+    ['Sunday', recipes[0]], 
+    ['Monday', recipes[1]], 
+    ['Tuesday', recipes[2]], 
+    ['Wednesday', recipes[3]], 
+    ['Thursday', recipes[3]], 
+    ['Friday', recipes[4]], 
+    ['Saturday', recipes[4]]
   ];
 
   function getWeek() {

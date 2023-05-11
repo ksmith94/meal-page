@@ -1,13 +1,28 @@
 import React, { useState } from "react";
-import { macAndCheese, chickenSoup, pastaBurroAlici, riceAndBeans, shakshuka } from "../DemoData/DemoRecipes";
-
+import ingredients from "../DemoData/Ingredients";
+import recipeIngredients from "../DemoData/RecipeIngredients";
+import GroceryList from "../types/GroceryList";
 
 function IngredientList(): JSX.Element {
-  const recipes = [macAndCheese, chickenSoup, pastaBurroAlici, riceAndBeans, shakshuka];
-  const ingredients: string[] = [];
-  recipes.forEach((recipe) => {
-    recipe.ingredients.forEach((ingredient) => ingredients.push(ingredient));
-  })
+
+  const groceryList: GroceryList = {};
+
+  for (let i = 0; i < recipeIngredients.length; i++) {
+    for (let j = 0; j < recipeIngredients[i].length; j++) {
+      const ingredientId = recipeIngredients[i][j].ingredientId;
+      const ingredient = getIngredient(ingredientId, ingredients);
+
+      if (ingredient === undefined) {
+        continue;
+      }
+
+      if (ingredient in groceryList) {
+        groceryList[ingredient]++;
+      } else {
+        groceryList[ingredient] = 1;
+      }
+    }
+  }
 
   const [checkedItems, setChecked] = useState(new Array(ingredients.length).fill(false));
 
@@ -21,7 +36,7 @@ function IngredientList(): JSX.Element {
     <div>
       <ul>
         {
-          ingredients.map((ingredient, i) => (
+          Object.keys(groceryList).map((ingredient, i) => (
             <li key={i}>
               <label>
                 <input
@@ -30,7 +45,7 @@ function IngredientList(): JSX.Element {
                   onChange={() => toggleCheck(i)}
                 />
                 <span style={{textDecoration: checkedItems[i] ? 'line-through' : 'none'}}>
-                  {ingredient}
+                  {`${groceryList[ingredient]} ${ingredient}`}
                 </span>
               </label>
             </li>
@@ -39,6 +54,14 @@ function IngredientList(): JSX.Element {
       </ul>
     </div>
   )
+}
+
+function getIngredient(id: number, ingredients: Ingredient[]) {
+  for (const ingredient of ingredients) {
+    if (ingredient.id === id) {
+      return ingredient.name;
+    }
+  }
 }
 
 export default IngredientList;

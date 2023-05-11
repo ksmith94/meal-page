@@ -12,8 +12,8 @@ function RecipeListItem(props: Recipe): JSX.Element {
       </Link>
       <div>
         <TitleLink to={`/recipe/${props.id}`}><Title>{props.title}</Title></TitleLink>
-        <Details className='recipe-preview-servings'>Servings: {props.servings}</Details>
-        <Details className='recipe-preview-time'>Total Time: {props.prepTime + props.cookTime} minutes</Details>
+        <Details className='recipe-preview-servings'>Servings: {props.baseServings}</Details>
+        <Details className='recipe-preview-time'>Total Time: {props.time} minutes</Details>
       </div>
     </Preview>
   )

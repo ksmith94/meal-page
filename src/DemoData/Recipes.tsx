@@ -1,13 +1,15 @@
-const macAndCheese = {
+import Recipe from "../types/Recipe"
+
+const macAndCheese: Recipe = {
   id: 0,
   title: 'Stovetop Mac & Cheese',
   description: 'A quick and simple mac and cheese recipe to make right on your stovetop!',
   baseServings: 2,
   time: 10,
-  instructions_id: 0
+  instructionsId: 0
 }
 
-const chickenNoodleSoup = {
+const chickenNoodleSoup: Recipe = {
   id: 1,
   title: 'Chicken Noodle Soup',
   description: 'A hearty comforting soup for any time of year!',
@@ -16,7 +18,7 @@ const chickenNoodleSoup = {
   instructionsId: 1
 }
 
-const pastaBurroAlici = {
+const pastaBurroAlici: Recipe = {
   id: 2,
   title: 'Pasta Burro e Alici',
   description: 'Butter, anchovies, and starchy cooking water come together to make a super-savory, creamy pasta sauce!',
@@ -26,7 +28,7 @@ const pastaBurroAlici = {
   instructionsId: 2
 }
 
-const shakshuka = {
+const shakshuka: Recipe = {
   id: 3,
   title: 'Shakshuka',
   description: 'A North African one-pan egg and tomato dish that is perfect for breakfast, lunch, or dinner!',
@@ -36,7 +38,7 @@ const shakshuka = {
   instructionsId: 3
 }
 
-const riceAndBeans = {
+const riceAndBeans: Recipe = {
   id: 4,
   title: 'Rice & Beans',
   description: 'An easy and nutritious vegetarian option!',
@@ -46,4 +48,6 @@ const riceAndBeans = {
   instructionsId: 4
 }
 
-const recipes = [macAndCheese, chickenNoodleSoup, pastaBurroAlici, shakshuka, riceAndBeans]
+const recipes: Recipe[] = [macAndCheese, chickenNoodleSoup, pastaBurroAlici, shakshuka, riceAndBeans];
+
+export default recipes;

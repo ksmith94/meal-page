@@ -1,7 +1,7 @@
 import React, { /*useEffect, useState*/ } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { recipes } from '../DemoData/DemoRecipes';
+import recipes from '../DemoData/Recipes';
 // import Recipe from '../types/Recipe';
 import RecipeCard from './RecipeCard';
 

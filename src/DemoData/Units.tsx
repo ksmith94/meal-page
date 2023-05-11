@@ -1,64 +1,66 @@
-const can = {
+import Unit from "../types/Unit"
+
+const can: Unit = {
   unitId: 11,
   unit: '14.5 oz can'
 }
 
-const largeCan = {
+const largeCan: Unit = {
   unitId: 10,
   unit: '28 oz can'
 }
 
-const teaspoon = {
+const teaspoon: Unit = {
   unitId: 9,
   unit: 'tsp'
 }
 
-const bunch = {
+const bunch: Unit = {
   unitId: 8,
   unit: 'bunch'
 }
 
-const cup = {
+const cup: Unit = {
   unitId: 7,
   unit: 'cup'
 }
 
-const inch = {
+const inch: Unit = {
   unitId: 6,
   unit: 'inch'
 }
 
-const clove = {
+const clove: Unit = {
   unitId: 5,
   unit: 'clove'
 }
 
-const bulb = {
+const bulb: Unit = {
   unitId: 4,
   unit: 'bulb'
 }
 
-const stalks = {
+const stalks: Unit = {
   unitId: 2,
   unit: 'stalks'
 }
 
-const tablespoon = {
+const tablespoon: Unit = {
   unitId: 3,
   unit: 'tbsp'
 }
 
-const pounds = {
+const pounds: Unit = {
   unitId: 1,
   unit: 'lb'
 }
 
-const ounces = {
+const ounces: Unit = {
   unitId: 0,
   unit: 'oz'
 }
 
-const units = [
+const units: Unit[] = [
   can,
   largeCan,
   teaspoon,

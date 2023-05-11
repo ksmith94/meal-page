@@ -1,14 +1,11 @@
-import Ingredient from './Ingredient';
-
 type Recipe = {
   id: number;
   title: string;
+  description: string
   image?: string;
-  ingredients: string[];
-  servings: number;
-  prepTime: number;
-  cookTime: number;
-  instructions: string[];
+  baseServings: number;
+  time: number;
+  instructionsId: number
 };
 
 export default Recipe;

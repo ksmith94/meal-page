@@ -36,8 +36,8 @@ function RecipePreview(props: Recipe): JSX.Element {
       <TitleLink to={`/recipe/${props.id}`}>
         <Title className="recipe-title">{props.title}</Title>
       </TitleLink>
-      <Details className="recipe-time">{props.prepTime + props.cookTime} minutes</Details>
-      <Details className="recipe-servings">{props.servings === 1 ? props.servings + ' serving' : props.servings + ' servings'}</Details>
+      <Details className="recipe-time">{props.time} minutes</Details>
+      <Details className="recipe-servings">{props.baseServings === 1 ? props.baseServings + ' serving' : props.baseServings + ' servings'}</Details>
     </Preview>
 
     // <Preview>

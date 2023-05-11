@@ -1,4 +1,6 @@
-const riceAndBeansInstructions = {
+import Instructions from "../types/Instructions"
+
+const riceAndBeansInstructions: Instructions = {
   id: 4,
   instructions: [
     'Cook the rice according to the package instructrions.',
@@ -8,7 +10,7 @@ const riceAndBeansInstructions = {
   ]
 }
 
-const shakshukaInstructions = {
+const shakshukaInstructions: Instructions = {
   id: 3,
   instructions: [
     'Heat the olive oil in a large skillet until shimmering. Add the onion, red bell pepper, and chile. Spread it into an even layer, and cook without moving until it begins to char. Stir, then repeat this process until the vegetables are fully softened.',
@@ -18,7 +20,7 @@ const shakshukaInstructions = {
   ]
 }
 
-const pastaBurroAliciInstructions = {
+const pastaBurroAliciInstructions: Instructions = {
   id: 2,
   instructions: [
     'In a small skillet, combine the olive oil and breadcrumbs and cook, stirring, until the breadcrumbs are golden brown. Season lightly with salt. Meanwhile, bring a large pot of salted water to a boil.',
@@ -31,7 +33,7 @@ const pastaBurroAliciInstructions = {
   ]
 }
 
-const chickenNoodleSoupInstructions = {
+const chickenNoodleSoupInstructions: Instructions = {
   id: 1,
   instructions: [
     'Heat the olive oil in a large pot or dutch oven over medium heat until shimmering. Add the chicken thighs, skin side down and cook until golden brown. Remove and put to the side, leaving any rendered fat in the pot.',
@@ -41,10 +43,20 @@ const chickenNoodleSoupInstructions = {
   ]
 }
 
-const mAndCInstructions = {
+const mAndCInstructions: Instructions = {
   id: 0,
   instructions: [
     'Put the macaroni in a large skillet and add water to just cover the pasta. Bring to a boil over medium heat and cook according to package instructions, adding more water as necessary if pan dries out.',
     'When the pasta is just shy of finished, add the evaporated milk and stir to combine. Add the grated cheese and stir until you have a gooey cheese suace. Continue cooking until the pasta is done and the sauce is at your desired consistency. If it reduces too much and starts to tighten up, add more evaporated milk to loosen it.'
   ]
 }
+
+const instructions = [
+  riceAndBeansInstructions,
+  shakshukaInstructions,
+  pastaBurroAliciInstructions,
+  chickenNoodleSoupInstructions,
+  mAndCInstructions
+];
+
+export default instructions;

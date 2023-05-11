@@ -1,30 +1,40 @@
 import React from "react";
 import styled from "styled-components";
 import Recipe from "../types/Recipe";
+import recipeIngredients from "../DemoData/RecipeIngredients";
+import ingredients from "../DemoData/Ingredients";
+import Instructions from "../types/Instructions";
+import Ingredient from "../types/Ingredient";
+import instructions from "../DemoData/Instructions";
 
 function RecipeCard(recipe: Recipe): JSX.Element {
+
+  const recipeId = recipe.id;
+  const ingredientList = getIngredients(recipeId, recipeIngredients, ingredients);
+  const instructionList = getInstructions(recipeId, instructions);
+
+
   return (
     <Wrapper>
       <StyledHeader>{recipe.title}</StyledHeader>
       <StyledSpan>
         <StyledImage src={recipe.image} alt={recipe.title} />
         <StyledDiv>
-          <StyledParagraph>Servings: {recipe.servings}</StyledParagraph>
-          <StyledParagraph>Prep Time: {recipe.prepTime} minutes</StyledParagraph>
-          <StyledParagraph>Cook Time: {recipe.cookTime} minutes</StyledParagraph>
+          <StyledParagraph>Servings: {recipe.baseServings}</StyledParagraph>
+          <StyledParagraph>Prep Time: {recipe.time} minutes</StyledParagraph>
         </StyledDiv>
       </StyledSpan>
         <StyledParagraph>Ingredients:</StyledParagraph>
         <IngredientList>
-          {recipe.ingredients.map((ingredient) => (
-            <li key={ingredient}>
-              {ingredient}
+          {ingredientList.map((ingredient, i) => (
+            <li key={i}>
+              {ingredient.name}
             </li>
           ))}
         </IngredientList>
         <StyledParagraph>Steps:</StyledParagraph>
         <Steps>
-          {recipe.instructions.map((instruction, i) => (
+          {instructionList.map((instruction, i) => (
             <li key={i}>
               {instruction}
             </li>
@@ -33,6 +43,36 @@ function RecipeCard(recipe: Recipe): JSX.Element {
     </Wrapper>
   )
 };
+
+function getIngredients(recipeId: number, recipeIngredients: RecipeIngredient[][], ingredients: Ingredient[]): Ingredient[] {
+  let recipe: RecipeIngredient[] = []
+  const ingredientList = [];
+
+  for (const recipeIngredient of recipeIngredients) {
+    if (recipeIngredient[0].recipeId === recipeId) {
+      recipe = [...recipeIngredient];
+    }
+  }
+
+  for (const recipeIngredient of recipe) {
+    const ingredientId = recipeIngredient.ingredientId;
+    for (const ingredient of ingredients) {
+      if (ingredient.id === ingredientId) ingredientList.push(ingredient);
+    }
+  }
+
+  return ingredientList;
+}
+
+function getInstructions(recipeId: number, instructions: Instructions[]): string[] {
+  for (const instruction of instructions) {
+    if (recipeId === instruction.id) {
+      return instruction.instructions;
+    }
+  }
+
+  return ['Invalid recipe ID – no instructions available'];
+}
 
 const Wrapper = styled.div`
   margin: 16px;
