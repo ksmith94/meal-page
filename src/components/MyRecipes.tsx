@@ -2,7 +2,6 @@ import recipes from "../DemoData/Recipes";
 import React from "react";
 import styled from "styled-components";
 import RecipeListItem from "./RecipeListItem";
-import { Link } from "react-router-dom";
 
 function MyRecipes(): JSX.Element {
 

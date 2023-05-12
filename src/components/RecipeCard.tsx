@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import instructions from "../DemoData/Instructions";
 import IngredientList from "./IngredientList";
 import InstructionsDisplay from "./InstructionsDisplay";
 
 function RecipeCard(recipe: Recipe): JSX.Element {
-
-  const recipeId = recipe.id;
 
   return (
     <Wrapper>
@@ -25,16 +22,6 @@ function RecipeCard(recipe: Recipe): JSX.Element {
     </Wrapper>
   )
 };
-
-function getInstructions(recipeId: number, instructions: Instructions[]): string[] {
-  for (const instruction of instructions) {
-    if (recipeId === instruction.id) {
-      return instruction.instructions;
-    }
-  }
-
-  return ['Invalid recipe ID – no instructions available'];
-}
 
 const Wrapper = styled.div`
   margin: 16px;
@@ -73,9 +60,9 @@ const StyledDiv = styled.div`
   padding-bottom: 4px;
 ` */
 
-const Steps = styled.ol`
+/* const Steps = styled.ol`
   font-family: Arial, Helvetica, sans-serif;
   padding-bottom: 4px;
-`
+` */
 
 export default RecipeCard;

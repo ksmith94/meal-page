@@ -1,5 +1,3 @@
-import Ingredient from "../types/Ingredient"
-
 const macaroni: Ingredient = {
   id: 0,
   name: 'macaroni',

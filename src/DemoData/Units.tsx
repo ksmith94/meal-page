@@ -1,5 +1,3 @@
-import Unit from "../types/Unit"
-
 const can: Unit = {
   unitId: 11,
   unit: '14.5 oz can'

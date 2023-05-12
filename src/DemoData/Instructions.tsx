@@ -1,5 +1,3 @@
-import Instructions from "../types/Instructions"
-
 const riceAndBeansInstructions: Instructions = {
   id: 4,
   instructions: [

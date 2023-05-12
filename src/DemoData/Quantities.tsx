@@ -1,5 +1,3 @@
-import Quantity from "../types/Quantity"
-
 const quarter: Quantity = {
   quantityId: 7,
   quantity: '1/4'

@@ -1,4 +1,3 @@
-import Recipe from "../types/Recipe";
 import React from "react";
 import { Details } from "./RecipePreview";
 import styled from "styled-components";

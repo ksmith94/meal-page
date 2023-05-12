@@ -1,5 +1,3 @@
-import RecipeIngredient from "../types/RecipeIngredient"
-
 const macAndCheeseMacaroni: RecipeIngredient = {
   recipeId: 0,
   ingredientId: 0,

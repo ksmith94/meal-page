@@ -1,5 +1,3 @@
-import Recipe from "../types/Recipe"
-
 const macAndCheese: Recipe = {
   id: 0,
   title: 'Stovetop Mac & Cheese',

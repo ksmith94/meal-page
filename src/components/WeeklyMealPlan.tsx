@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import recipes from "../DemoData/Recipes";
-import Recipe from "../types/Recipe";
 import RecipePreview from "./RecipePreview";
 
 function WeeklyMealPlan(): JSX.Element {
