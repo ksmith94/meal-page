@@ -1,4 +1,4 @@
-interface IngredientDisplayItem {
+type IngredientDisplayItem = {
   quantity?: string,
   ingredient?: string,
   unit?: string,

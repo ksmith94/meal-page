@@ -1,5 +1,3 @@
-import Preparation from "../types/Preparation"
-
 const shredded: Preparation = {
   preparationId: 0,
   preparation: 'shredded'

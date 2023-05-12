@@ -1,18 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Recipe from "../types/Recipe";
-import recipeIngredients from "../DemoData/RecipeIngredients";
-import ingredients from "../DemoData/Ingredients";
-import Instructions from "../types/Instructions";
-import Ingredient from "../types/Ingredient";
 import instructions from "../DemoData/Instructions";
 import IngredientList from "./IngredientList";
 
 function RecipeCard(recipe: Recipe): JSX.Element {
 
   const recipeId = recipe.id;
-  console.log(recipeId)
-  const ingredientList = getIngredients(recipeId, recipeIngredients, ingredients);
   const instructionList = getInstructions(recipeId, instructions);
 
 
@@ -27,8 +20,7 @@ function RecipeCard(recipe: Recipe): JSX.Element {
         </StyledDiv>
       </StyledSpan>
         <StyledParagraph>Ingredients:</StyledParagraph>
-        <IngredientList {...recipe}>
-        </IngredientList>
+        <IngredientList {...recipe} />
         <StyledParagraph>Steps:</StyledParagraph>
         <Steps>
           {instructionList.map((instruction, i) => (
@@ -40,27 +32,6 @@ function RecipeCard(recipe: Recipe): JSX.Element {
     </Wrapper>
   )
 };
-
-function getIngredients(recipeId: number, recipeIngredients: RecipeIngredient[][], ingredients: Ingredient[]): Ingredient[] {
-  let recipe: RecipeIngredient[] = []
-  const ingredientList = [];
-
-  for (const recipeIngredient of recipeIngredients) {
-    if (recipeIngredient[0].recipeId === recipeId) {
-      recipe = [...recipeIngredient];
-    }
-  }
-
-  for (const recipeIngredient of recipe) {
-    const ingredientId = recipeIngredient.ingredientId;
-    for (const ingredient of ingredients) {
-      if (ingredient.id === ingredientId) ingredientList.push(ingredient);
-    }
-  }
-
-
-  return ingredientList;
-}
 
 function getInstructions(recipeId: number, instructions: Instructions[]): string[] {
   for (const instruction of instructions) {
