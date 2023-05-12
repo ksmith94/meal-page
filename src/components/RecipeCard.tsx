@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import instructions from "../DemoData/Instructions";
 import IngredientList from "./IngredientList";
+import InstructionsDisplay from "./InstructionsDisplay";
 
 function RecipeCard(recipe: Recipe): JSX.Element {
 
   const recipeId = recipe.id;
-  const instructionList = getInstructions(recipeId, instructions);
-
 
   return (
     <Wrapper>
@@ -22,13 +21,7 @@ function RecipeCard(recipe: Recipe): JSX.Element {
         <StyledParagraph>Ingredients:</StyledParagraph>
         <IngredientList {...recipe} />
         <StyledParagraph>Steps:</StyledParagraph>
-        <Steps>
-          {instructionList.map((instruction, i) => (
-            <li key={i}>
-              {instruction}
-            </li>
-          ))}
-        </Steps>
+        <InstructionsDisplay {...recipe} />
     </Wrapper>
   )
 };

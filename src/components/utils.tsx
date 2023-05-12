@@ -121,3 +121,18 @@ function getPreparation(preparations: Preparation[], preparationId: number) {
     }
   }
 }
+
+/**
+ * Helper function that returns an array of recipe instructions, given the id and list off al instructions
+ * 
+ * @param id 
+ * @param instructions 
+ * @returns 
+ */
+export function getInstructions(id: number, instructions: Instructions[]) {
+  for (const instruction of instructions) {
+    if (id === instruction.id) {
+      return instruction.instructions;
+    }
+  }
+}
