@@ -82,14 +82,14 @@ const Cancel = styled.button`
 const DeactivateButton = styled.button`
   border: none;
   background: hsl(358, 70%, 90%);
-  color: hsl(358, 70%, 49%);
+  color: hsl(358, 70%, 41%);
   font-family: sans-serif;
   border-radius: 2px;
 
   &:hover {
     cursor: pointer;
-    border: 1px solid hsl(358, 70%, 41%);
-    font-weight: 600;
+    border: 1px solid hsl(358, 70%, 33%);
+    font-weight: 600
   }
 `
 

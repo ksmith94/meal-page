@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import ingredients from "../DemoData/Ingredients";
 import preparations from "../DemoData/Preparations";
 import quantities from "../DemoData/Quantities";
@@ -13,6 +14,7 @@ function IngredientList(recipe: Recipe): JSX.Element {
 
   return (
     <div>
+      <h3>Ingredients</h3>
       <ul>
         {
           ingredientDisplay.map((ingredient, i) => (
@@ -31,5 +33,9 @@ function getRecipeIngredients(recipeId: number, recipeIngredients: RecipeIngredi
     }
   }
 }
+
+const Ingredients = styled.h3`
+  padding-left: 16px;
+`
 
 export default IngredientList;

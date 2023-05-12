@@ -9,14 +9,13 @@ function RecipeCard(recipe: Recipe): JSX.Element {
     <Wrapper>
       <StyledHeader>{recipe.title}</StyledHeader>
       <StyledSpan>
-        <StyledImage src={recipe.image} alt={recipe.title} />
         <StyledDiv>
-          <StyledParagraph>Servings: {recipe.baseServings}</StyledParagraph>
-          <StyledParagraph>Prep Time: {recipe.time} minutes</StyledParagraph>
+          <StyledImage src={recipe.image} alt={recipe.title} />
+          <StyledParagraph>{recipe.baseServings} Servings</StyledParagraph>
+          <StyledParagraph>{recipe.time} minutes</StyledParagraph>
         </StyledDiv>
-      </StyledSpan>
-        <StyledParagraph>Ingredients:</StyledParagraph>
         <IngredientList {...recipe} />
+      </StyledSpan>
         <StyledParagraph>Steps:</StyledParagraph>
         <InstructionsDisplay {...recipe} />
     </Wrapper>
@@ -24,35 +23,38 @@ function RecipeCard(recipe: Recipe): JSX.Element {
 };
 
 const Wrapper = styled.div`
-  margin: 16px;
+  margin: 0 auto;
   margin-top: 0px;
   padding: 8px;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: hsl(0 0% 91%)
+  background-color: hsl(217, 10%, 90%);
+  width: 67%;
+  color: hsl(217, 55%, 25%);
+  font-family: “Lexend Deca”, “Helvetica”, sans-serif;
 `;
 
 const StyledImage = styled.img`
-  width: 40%;
+  width: 100%;
   padding-bottom: 4px;
 `;
 
 const StyledHeader = styled.h3`
   padding-bottom: 4px;
-  font-family: Arial, Helvetica, sans-serif;
 `
 
 const StyledParagraph = styled.p`
   padding-bottom: 4px;
-  font-family: Arial, Helvetica, sans-serif;
 `
 
-const StyledSpan = styled.span`
-  display: inline;
+const StyledSpan = styled.div`
+  display: flex;
 `
 
 const StyledDiv = styled.div`
   margin: 8px;
+  width: fit-content;
+  max-width: 60%;
 `
 
 /* const IngredientList = styled.ul`
