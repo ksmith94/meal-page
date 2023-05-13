@@ -8,7 +8,7 @@ import RecipePreview from './RecipePreview';
 function DailyRecipe(props: Recipe): JSX.Element | null {
   const date: Date = new Date();
 
-  function getDateDisplay(date: Date, locale: string = 'us-EN') {
+  function getDateDisplay(date: Date, locale = 'us-EN') {
     return date.toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric' })
   }
 

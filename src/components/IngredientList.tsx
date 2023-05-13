@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 import ingredients from "../DemoData/Ingredients";
 import preparations from "../DemoData/Preparations";
 import quantities from "../DemoData/Quantities";
@@ -34,8 +34,8 @@ function getRecipeIngredients(recipeId: number, recipeIngredients: RecipeIngredi
   }
 }
 
-const Ingredients = styled.h3`
-  padding-left: 16px;
-`
+// const Ingredients = styled.h3`
+//   padding-left: 16px;
+// `
 
 export default IngredientList;

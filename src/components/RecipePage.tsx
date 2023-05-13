@@ -43,7 +43,7 @@ function RecipePage() {
       }
     </Wrapper>
   );
-};
+}
 
 const Wrapper = styled.div`
   margin-top: 112px;

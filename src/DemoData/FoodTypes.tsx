@@ -50,3 +50,5 @@ const foodTypes: IngredientType[] = [
   spices,
   beansLegumes
 ]
+
+export default foodTypes;

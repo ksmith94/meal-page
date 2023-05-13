@@ -20,7 +20,7 @@ function RecipeCard(recipe: Recipe): JSX.Element {
         <InstructionsDisplay {...recipe} />
     </Wrapper>
   )
-};
+}
 
 const Wrapper = styled.div`
   margin: 0 auto;
