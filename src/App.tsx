@@ -7,6 +7,7 @@ import MyRecipes from './components/MyRecipes';
 import RecipePage from './components/RecipePage';
 import SearchResults from './components/SearchResults';
 import Home from './HomePage';
+import NewRecipe from './components/NewRecipe';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/myrecipes" element={<MyRecipes />} />
         <Route path="/search/:term" element={<SearchResults />} />
         <Route path="/ingredients" element={<IngredientList />} />
+        <Route path="/create-a-recipe" element={<NewRecipe />} />
       </Routes>
     </Router>
   );
