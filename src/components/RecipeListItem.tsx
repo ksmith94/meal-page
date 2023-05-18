@@ -21,12 +21,13 @@ function RecipeListItem(props: Recipe): JSX.Element {
 export default RecipeListItem;
 
 const Preview = styled.div`
-  background: hsl(0, 0%, 83%);
-  color: black;
+  background: hsl(217, 30%, 90%);
+  color: hsl(230, 70%, 25%);
   padding-bottom: 8px;
   border-radius: 10px;
   display: grid;
   grid-template-rows: [image] 67% [words] auto;
+  min-width: 120px;
 `
 
 const ImageDisplay = styled.img`
@@ -41,7 +42,7 @@ const Title = styled.h3`
 `
 
 const TitleLink = styled(Link)`
-  color: black;
+  color: hsl(217, 40%, 20%);
   text-decoration: none;
   line-height: 1.2rem;
 `

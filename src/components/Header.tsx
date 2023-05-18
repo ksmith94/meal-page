@@ -74,7 +74,7 @@ const HeaderTitle = styled.h1`
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  color: hsl(217 55% 25%);
+  color: hsl(217 70% 25%);
   text-align: center;
   text-decoration: none;
 `

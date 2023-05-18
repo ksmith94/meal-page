@@ -4,8 +4,8 @@ import recipes from "../DemoData/Recipes";
 import RecipePreview from "./RecipePreview";
 
 function WeeklyMealPlan(): JSX.Element {
-  const days: [string, Recipe][] = [
-    ['Sunday', recipes[0]], 
+  const days: [string, (Recipe | null)][] = [
+    ['Sunday', null], 
     ['Monday', recipes[1]], 
     ['Tuesday', recipes[2]], 
     ['Wednesday', recipes[3]], 
@@ -35,7 +35,15 @@ function WeeklyMealPlan(): JSX.Element {
           days.map((day, index) => (
             <Weekday className="weekday" key={index}>
               <Day>{day[0]}</Day>
-              <RecipePreview {...day[1]} />
+              {
+                day[1] ? (
+                  <RecipePreview {...day[1]} />
+                ) : (
+                  <div>
+                    <p>No recipe for today</p>
+                  </div>
+                )
+              }
             </Weekday>
           ))
         }
@@ -47,8 +55,9 @@ function WeeklyMealPlan(): JSX.Element {
 export default WeeklyMealPlan;
 
 const WeekCal = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 180px 180px 180px 180px 180px 180px 180px;
+  grid-column-gap: 16px; 
   margin: 0 16px;
   width: 97%;
   overflow: auto;
@@ -58,7 +67,7 @@ const Week = styled.h2`
   margin-left: 16px;
   font-size: 20px;
   font-weight: 600;
-  color: hsl(0, 0%, 30%);
+  color: hsl(217, 40%, 20%);
 `
 
 const Weekday = styled.div`
@@ -67,5 +76,5 @@ const Weekday = styled.div`
 
 const Day = styled.h3`
   font-size: 20px;
-  color: hsl(0, 0%, 30%);
+  color: hsl(217, 40%, 20%);
 `

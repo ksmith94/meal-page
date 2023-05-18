@@ -28,9 +28,9 @@ const Wrapper = styled.div`
   padding: 8px;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: hsl(217, 10%, 90%);
+  background-color: hsl(217, 30%, 90%);
   width: 67%;
-  color: hsl(217, 55%, 25%);
+  color: hsl(217, 70%, 25%);
   font-family: “Lexend Deca”, “Helvetica”, sans-serif;
 `;
 

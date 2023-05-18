@@ -60,8 +60,8 @@ function RecipePreview(props: Recipe): JSX.Element {
 }
 
 const Preview = styled.div`
-  background: hsl(0, 0%, 83%);
-  color: black;
+  background: hsl(217, 30%, 90%);
+  color: hsl(217, 40%, 20%);
   padding-bottom: 8px;
   border-radius: 10px;
   height: 180px;
@@ -81,7 +81,7 @@ const Title = styled.h3`
   font-size: 20px;
   line-height: 1.2rem;
   margin-bottom: 4px;
-  color: hsl(0, 0%, 0%);
+  color: hsl(217, 40%, 20%);
 `
 
 const Image = styled.img`
@@ -92,7 +92,7 @@ const Image = styled.img`
 
 const TitleLink = styled(Link)`
   text-decoration: none;
-  color: hsl(0, 0%, 0%);
+  color: hsl(217, 40%, 20%);
 
   &:hover {
     text-decoration: underline;
@@ -109,7 +109,7 @@ const TitleLink = styled(Link)`
 export const Details = styled.p`
   padding-left: 8px;
   margin-top: -4px;
-  color: hsl(0, 0%, 30%);
+  color: hsl(217, 30%, 30%);
   font-size: 12px;
 `
 

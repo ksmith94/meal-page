@@ -45,6 +45,11 @@ const meat: IngredientType = {
   type: 'meat'
 }
 
+const wineAndLiquor: IngredientType = {
+  id: 9,
+  type: 'wine and liquor'
+}
+
 const foodTypes: IngredientType[] = [
   pasta,
   dairy,
@@ -54,7 +59,8 @@ const foodTypes: IngredientType[] = [
   pantryStaples,
   spices,
   beansLegumes,
-  meat
+  meat,
+  wineAndLiquor
 ]
 
 export default foodTypes;
