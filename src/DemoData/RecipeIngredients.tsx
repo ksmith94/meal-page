@@ -359,12 +359,152 @@ const riceBeansRecipeIngredients: RecipeIngredient[] = [
   riceBeansRice
 ]
 
+const pastaCeciGarlic: RecipeIngredient = {
+  recipeId: 5,
+  ingredientId: 9,
+  quantityId: 5,
+  unitId: 5,
+  preparationId: 3
+}
+
+const pastaCeciOregano: RecipeIngredient = {
+  recipeId: 5,
+  ingredientId: 29,
+  quantityId: 2,
+  unitId: 9,
+}
+
+const pastaCeciOliveOil: RecipeIngredient = {
+  recipeId: 5,
+  ingredientId: 4,
+  quantityId: 3,
+  unitId: 3,
+}
+
+const pastaCeciTomatoPaste: RecipeIngredient = {
+  recipeId: 5,
+  ingredientId: 32,
+  quantityId: 2,
+  unitId: 3,
+}
+
+const pastaCeciChickpeas: RecipeIngredient = {
+  recipeId: 5,
+  ingredientId: 33,
+  quantityId: 3,
+  unitId: 11,
+  preparationId: 9
+}
+
+const pastaCeciDitalini: RecipeIngredient = {
+  recipeId: 5,
+  ingredientId: 34,
+  quantityId: 1,
+  unitId: 7,
+}
+
+const pastaCeciStock: RecipeIngredient = {
+  recipeId: 5,
+  ingredientId: 11,
+  quantityId: 2,
+  unitId: 7,
+}
+
+const pastaCeciRecipeIngredients: RecipeIngredient[] = [
+  pastaCeciGarlic, 
+  pastaCeciOregano, 
+  pastaCeciOliveOil, 
+  pastaCeciTomatoPaste, 
+  pastaCeciChickpeas, 
+  pastaCeciDitalini, 
+  pastaCeciStock
+]
+
+const porkRaguOliveOil: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 4,
+  quantityId: 2,
+  unitId: 3,
+}
+
+const porkRaguPork: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 35,
+  quantityId: 2,
+  unitId: 1,
+  preparationId: 10
+}
+
+const porkRaguOnion: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 7,
+  quantityId: 3,
+  preparationId: 1
+}
+
+const porkRaguGarlic: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 9,
+  quantityId: 4,
+  unitId: 5,
+  preparationId: 3
+}
+
+const porkRaguTomatoPaste: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 32,
+  quantityId: 2,
+  unitId: 3,
+}
+
+const porkRaguChiles: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 36,
+  quantityId: 2,
+  unitId: 3,
+}
+
+const porkRaguWine: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 37,
+  quantityId: 2,
+  unitId: 5,
+}
+
+const porkRaguTomatoes: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 23,
+  quantityId: 3,
+  unitId: 10,
+  preparationId: 7
+}
+
+const porkRaguBay: RecipeIngredient = {
+  recipeId: 6,
+  ingredientId: 38,
+  quantityId: 2,
+}
+
+const porkRaguRecipeIngredients = [
+  porkRaguOliveOil,
+  porkRaguPork,
+  porkRaguOnion,
+  porkRaguGarlic,
+  porkRaguTomatoPaste,
+  porkRaguChiles,
+  porkRaguWine,
+  porkRaguTomatoes,
+  porkRaguBay
+]
+
 const recipeIngredients: RecipeIngredient[][] = [
   macAndCheeseRecipeIngredients,
   chickenSoupRecipeIngredients, 
   burroAliciRecipeIngredients, 
   shakshukaRecipeIngredients, 
-  riceBeansRecipeIngredients
+  riceBeansRecipeIngredients,
+  pastaCeciRecipeIngredients,
+  porkRaguRecipeIngredients
 ]
 
 export default recipeIngredients;

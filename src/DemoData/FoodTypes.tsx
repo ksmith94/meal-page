@@ -40,6 +40,11 @@ const beansLegumes: IngredientType = {
   type: 'beans/legumes'
 }
 
+const meat: IngredientType = {
+  id: 8,
+  type: 'meat'
+}
+
 const foodTypes: IngredientType[] = [
   pasta,
   dairy,
@@ -48,7 +53,8 @@ const foodTypes: IngredientType[] = [
   produce,
   pantryStaples,
   spices,
-  beansLegumes
+  beansLegumes,
+  meat
 ]
 
 export default foodTypes;

@@ -4,7 +4,7 @@
 //   onStepAdd: (step: string) => void;
 // }
 
-// function RecipeStepForm({ onStepAdd }: RecipeStepFormProps): JSX.Element {
+function RecipeStepForm(/*{ onStepAdd }: RecipeStepFormProps*/) /*JSX.Element*/ {
 //   const [currentStep, setCurrentStep] = useState<string>('');
 
 //   const handleStepAdd = (e: FormEvent<HTMLInputElement> | MouseEvent<HTMLIN) => {
@@ -31,6 +31,6 @@
 //       <button onClick={(e) => handleStepAdd(e)}>Add Step</button>
 //     </div>
 //   )
-// }
+}
 
-// export default RecipeStepForm;
+export default RecipeStepForm;

@@ -49,12 +49,28 @@ const mAndCInstructions: Instructions = {
   ]
 }
 
+const pastaCeciInstructions: Instructions = {
+  id: 5,
+  instructions: [
+    'Add the olive oil, garlic, and oregano to a small/medium pot over medium low heat and saute until the garlic is just beginning to brown, about 3 minutes.',
+    'Add the tomato paste to the pot and stir to mix into the oil. Let the mixture really incorporate for 2 minutes, until the oil is stained a dark red. Add the chickpeas and stock and bring to a boil',
+    'Add the pasta and cook according to the package instructions, until the pasta is just al dente. Season to taste with salt and pepper and serve immediately.'
+  ]
+}
+
+const porkRaguInstructions: Instructions = {
+  id: 6,
+  instructions: ['']
+}
+
 const instructions = [
   riceAndBeansInstructions,
   shakshukaInstructions,
   pastaBurroAliciInstructions,
   chickenNoodleSoupInstructions,
-  mAndCInstructions
+  mAndCInstructions,
+  pastaCeciInstructions,
+  porkRaguInstructions
 ];
 
 export default instructions;

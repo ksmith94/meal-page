@@ -196,6 +196,48 @@ const rice: Ingredient = {
   typeId: 5
 }
 
+const tomatoPaste: Ingredient = {
+  id: 32,
+  name: 'tomato paste',
+  typeId: 5
+}
+
+const cannedChickpeas: Ingredient = {
+  id: 33,
+  name: 'canned chickpeas',
+  typeId: 5
+}
+
+const ditalini: Ingredient = {
+  id: 34,
+  name: 'ditalini',
+  typeId: 0
+}
+
+const porkShoulder: Ingredient = {
+  id: 35,
+  name: 'pork shoulder',
+  typeId: 8
+}
+
+const calabrianChiles: Ingredient = {
+  id: 36,
+  name: 'Calabrian chiles',
+  typeId: 5
+}
+
+const whiteWine: Ingredient = {
+  id: 37,
+  name: 'white wine',
+  typeId: 9
+}
+
+const bayLeaf: Ingredient = {
+  id: 38,
+  name: 'bay leaf',
+  typeId: 6
+}
+
 const ingredients: Ingredient[] = [
   macaroni,
   cheddarCheese,
@@ -229,7 +271,14 @@ const ingredients: Ingredient[] = [
   driedOregano,
   groundCinnamon,
   pintoBeans,
-  rice
+  rice,
+  tomatoPaste,
+  cannedChickpeas,
+  ditalini,
+  porkShoulder,
+  calabrianChiles,
+  whiteWine,
+  bayLeaf
 ]
 
 export default ingredients;

@@ -43,6 +43,16 @@ const diced: Preparation = {
   preparation: 'diced'
 }
 
+const drainedRinsed: Preparation = {
+  preparationId: 9,
+  preparation: 'drained and rinsed'
+}
+
+const oneInchCubes: Preparation = {
+  preparationId: 10,
+  preparation: 'cut into 1 inch cubes'
+}
+
 const preparations: Preparation[] = [
   shredded,
   cooked,
@@ -52,7 +62,9 @@ const preparations: Preparation[] = [
   chopped,
   minced,
   thinSliced,
-  diced
+  diced,
+  drainedRinsed,
+  oneInchCubes
 ]
 
 export default preparations;

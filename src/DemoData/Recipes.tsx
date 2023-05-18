@@ -46,6 +46,25 @@ const riceAndBeans: Recipe = {
   instructionsId: 4
 }
 
-const recipes: Recipe[] = [macAndCheese, chickenNoodleSoup, pastaBurroAlici, shakshuka, riceAndBeans];
+const pastaECeci: Recipe = {
+  id: 5,
+  title: 'Pasta e Ceci',
+  description: 'An easy and hearty stew of pasta and chickpeas',
+  image: 'https://i0.wp.com/smittenkitchen.com/wp-content/uploads//2017/10/quick-pasta-e-ceci-pasta-with-chickpeas.jpg?fit=750%2C500&ssl=1',
+  baseServings: 2,
+  time: 15,
+  instructionsId: 5
+}
+
+const easyPorkRagu: Recipe = {
+  id: 6,
+  title: 'Easy Pork Ragu',
+  description: 'A delicious and hearty pork sauce to serve over pasta, polenta, or anything else you might want!',
+  baseServings: 6,
+  time: 180,
+  instructionsId: 6
+}
+
+const recipes: Recipe[] = [macAndCheese, chickenNoodleSoup, pastaBurroAlici, shakshuka, riceAndBeans, pastaECeci, easyPorkRagu];
 
 export default recipes;
