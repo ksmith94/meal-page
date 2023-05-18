@@ -1,90 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 function NewRecipe(): JSX.Element {
+  const [recipeName, setRecipeName] = useState<string>('');
+  const [ingredients, setIngredients] = useState<string[]>(['']);
+  const [instructions, setInstructions] = useState<string[]>(['']);
+
+  const handleRecipeNameChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setRecipeName(event.target.value);
+  }
+
+  const handleIngredientChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const updatedIngredients = [...ingredients];
+    updatedIngredients[index] = event.target.value;
+    setIngredients(updatedIngredients);
+  }
+
+  const handleAddIngredient = () => {
+    setIngredients([...ingredients, ""]);
+  }
+
+  const handleInstructionChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const updatedInstructions = [...instructions];
+    updatedInstructions[index] = event.target.value;
+    setInstructions(updatedInstructions);
+  }
+
+  const handleAddInstructions = () => {
+    setInstructions([...instructions, ''])
+  }
+
+  const handleFormSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    console.log("Recipe Name:", recipeName);
+    console.log("Ingredients:", ingredients);
+    console.log("Instructions:", instructions);
+
+    setRecipeName('');
+    setIngredients(['']);
+    setInstructions(['']);
+  }
+
   return (
     <Wrapper>
-      <form>
-        <SectionHeader>Recipe Title</SectionHeader>
-        <RecipeTitleWrapper>
-          <label htmlFor="recipetitle">Recipe Title</label>
-          {/* <Description>The name of your recipe</Description> */}
-          <RecipeInput type="text" id="recipetitle" placeholder="Recipe Title" />
-        </RecipeTitleWrapper>
-        <SectionHeader>Ingredients</SectionHeader>
-        <IngredientWrapper>
-          <IngredientEntries>
-            <IngredientLabel htmlFor="recipeingredient">Ingredient</IngredientLabel>
-            <IngredientInput type="text" id="recipeingredients" placeholder="cilantro"/>
-          </IngredientEntries><br />
-          <IngredientEntries>
-            <IngredientLabel htmlFor="ingredientquantity">Quantity</IngredientLabel>
-            <IngredientInput type="text" id="ingredientquantity" placeholder="1"/>
-          </IngredientEntries><br />
-          <IngredientEntries>
-            <IngredientLabel htmlFor="ingredientunit">Unit</IngredientLabel>
-            <IngredientInput type="text" id="ingrdientunit" placeholder="cup"/>
-          </IngredientEntries><br />
-          <IngredientEntries>
-            <IngredientLabel htmlFor="ingredientprep">Preparation</IngredientLabel>
-            <IngredientInput type="text" id="ingredientprep" placeholder="chopped"/>
-          </IngredientEntries>
-        </IngredientWrapper>
+      <h3>Create a recipe!</h3>
+      <form onSubmit={handleFormSubmit}>
         <div>
-          <SectionHeader>Instructions</SectionHeader>
-          <label htmlFor="recipesteps">Steps</label>
-          {/* <Description>Step by step instructions for your recipe</Description> */}
-          <input type="text" id="recipesteps" />
+          <label htmlFor="recipeName">Recipe Name</label>
+          <input
+            type="text"
+            id="recipeName"
+            value={recipeName}
+            onChange={handleRecipeNameChange}
+          />
         </div>
+        <div>
+          <label htmlFor="ingredients">Ingredients</label>
+          {
+            ingredients.map((ingredient, i) => (
+              <input 
+                type="text"
+                key={i}
+                value={ingredient}
+                onChange={(e) => handleIngredientChange(e, i)}
+              />
+            ))
+          }
+          <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
+        </div>
+        <div>
+          <label htmlFor="instructions">Instructions</label>
+          {
+            instructions.map((instruction, i) => (
+              <input 
+                type="text"
+                key={i}
+                value={instruction}
+                onChange={(e) => handleInstructionChange(e, i)}
+              />
+            ))
+          }
+          <button type="button" onClick={handleAddInstructions}>Add Instruction</button>
+        </div>
+
+        <button type="button" onClick={handleFormSubmit}>Create Recipe!</button>
       </form>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
+  margin: auto;
+  width: 480px;
   margin-top: 112px;
-  margin-left: 16px;
+  background: hsl(205, 70%, 90%);
+  border-radius: 8px;
+  padding: 12px;
+  border: 2px solid hsl(217, 30%, 30%);
   font-family: “Lexend Deca”, “Helvetica”, sans-serif;
-`
-
-const SectionHeader = styled.h3`
-  font-family: inherit;
-  color: hsl(217, 40%, 20%)
-`
-
-/* const Description = styled.p`
-  font-family: inherit;
-  font-size: 14px;
-  color: hsl(217, 20%, 40%);
-  font-weight: 100;
-` */
-
-const IngredientWrapper = styled.div`
-  line-height: 12px;
-  margin-bottom: 24px;
-  margin-top: 12px;
-`
-
-const IngredientEntries = styled.span`
-  display: grid;
-  grid-template-columns: 96px 128px;
-`
-
-const IngredientInput = styled.input`
-  width: 128px;
-  font-size: 14px;
-`
-
-const IngredientLabel = styled.label`
-  width: 64px;
-`
-
-const RecipeTitleWrapper = styled.div`
-  margin-bottom: 24px;
-`
-
-const RecipeInput = styled.input`
-  font-size: 14px;
+  color: hsl(217, 30%, 30%);
 `
 
 export default NewRecipe;
