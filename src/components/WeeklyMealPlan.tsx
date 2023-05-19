@@ -1,3 +1,5 @@
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 import recipes from "../DemoData/Recipes";
@@ -39,9 +41,10 @@ function WeeklyMealPlan(): JSX.Element {
                 day[1] ? (
                   <RecipePreview {...day[1]} />
                 ) : (
-                  <div>
-                    <p>No recipe for today</p>
-                  </div>
+                  <NoRecipe>
+                    <CreateARecipe>No recipe for today</CreateARecipe>
+                    <RecipeButton>Add one!<PlusIcon icon={faPlus} /></RecipeButton>
+                  </NoRecipe>
                 )
               }
             </Weekday>
@@ -77,4 +80,42 @@ const Weekday = styled.div`
 const Day = styled.h3`
   font-size: 20px;
   color: hsl(217, 40%, 20%);
+`
+
+const NoRecipe = styled.div`
+  background: hsl(217, 30%, 90%);
+  color: hsl(217, 40%, 20%);
+  padding-bottom: 8px;
+  border-radius: 10px;
+  height: 180px;
+  width: 180px;
+  margin-right: 8px;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: 30% 30%;
+  grid-row-gap: 4px;
+`
+
+const CreateARecipe = styled.p`
+  width: fit-content;
+  margin: 16px auto;
+  font-size: 18px;
+`
+
+const PlusIcon = styled(FontAwesomeIcon)`
+  margin: 0 4px;
+`
+
+const RecipeButton = styled.button`
+  justify-self: center;
+  height: fit-content;
+  padding: 4px 2px;
+  background: hsl(210, 65%, 85%);
+  border: 1px solid hsl(217, 40%, 20%);
+  border-radius: 4px;
+
+  &:hover {
+    background-color: hsl(215, 60%, 75%);
+    border: 2px solid hsl(217, 40%, 20%);
+  }
 `
