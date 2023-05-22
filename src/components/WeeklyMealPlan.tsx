@@ -1,11 +1,20 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import recipes from "../DemoData/Recipes";
+import AddRecipe from "./AddRecipeModal";
 import RecipePreview from "./RecipePreview";
 
 function WeeklyMealPlan(): JSX.Element {
+  const [show, setShow] = useState(false);
+  const [day, setDay] = useState('');
+
+  const handleAddRecipe = (day: string) => {
+    setShow(true);
+    setDay(day);
+  }
+
   const days: [string, (Recipe | null)][] = [
     ['Sunday', null], 
     ['Monday', recipes[1]], 
@@ -43,13 +52,14 @@ function WeeklyMealPlan(): JSX.Element {
                 ) : (
                   <NoRecipe>
                     <CreateARecipe>No recipe for today</CreateARecipe>
-                    <RecipeButton>Add one!<PlusIcon icon={faPlus} /></RecipeButton>
+                    <RecipeButton onClick={() => handleAddRecipe(day[0])}>Add one!<PlusIcon icon={faPlus} /></RecipeButton>
                   </NoRecipe>
                 )
               }
             </Weekday>
           ))
         }
+        <AddRecipe day={day} show={show} onClose={() => setShow(false)}/>
       </WeekCal>
     </div>
   )
