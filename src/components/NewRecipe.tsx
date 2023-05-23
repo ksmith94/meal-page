@@ -1,23 +1,56 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import AddIngredient from "./AddIngredient";
+
+interface Ingredient {
+  name: string,
+  quantity: string,
+  unit?: string,
+  prep?: string
+}
 
 function NewRecipe(): JSX.Element {
   const [recipeName, setRecipeName] = useState<string>('');
-  const [ingredients, setIngredients] = useState<string[]>(['']);
+  const [ingredientNames, setIngredientNames] = useState<string[]>(['']);
+  const [quantities, setQuantities] = useState<string[]>(['']);
+  const [units, setUnits] = useState<string[]>(['']);
+  const [preps, setPreps] = useState<string[]>(['']);
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [instructions, setInstructions] = useState<string[]>(['']);
-
+  
   const handleRecipeNameChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setRecipeName(event.target.value);
   }
 
-  const handleIngredientChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    const updatedIngredients = [...ingredients];
-    updatedIngredients[index] = event.target.value;
-    setIngredients(updatedIngredients);
+  const handleIngredientNameChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
+    const updatedIngredients = [...ingredientNames];
+    updatedIngredients[i] = event.target.value;
+    setIngredientNames(updatedIngredients);
+  }
+
+  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
+    const updatedQuantities = [...quantities];
+    updatedQuantities[i] = event.target.value;
+    setQuantities(updatedQuantities);
+  }
+
+  const handleUnitChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
+    const updatedUnits = [...units];
+    updatedUnits[i] = event.target.value;
+    setUnits(updatedUnits);
+  }
+
+  const handlePrepChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
+    const updatedPreps = [...preps];
+    updatedPreps[i] = event.target.value;
+    setPreps(updatedPreps);
   }
 
   const handleAddIngredient = () => {
-    setIngredients([...ingredients, ""]);
+    setIngredientNames([...ingredientNames, ""]);
+    setQuantities([...quantities, ""]);
+    setUnits([...units, ""]);
+    setPreps([...preps, ""]);
   }
 
   const handleInstructionChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -33,12 +66,26 @@ function NewRecipe(): JSX.Element {
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
+    for (let i = 0; i < ingredientNames.length; i++) {
+      const currentIngredient: Ingredient = {
+        name: ingredientNames[i],
+        quantity: quantities[i],
+        unit: units[i],
+        prep: preps[i]
+      }
+
+      const updatedIngredients = [...ingredients];
+      updatedIngredients[i] = currentIngredient;
+      setIngredients(updatedIngredients);
+    }
+
+
     console.log("Recipe Name:", recipeName);
     console.log("Ingredients:", ingredients);
     console.log("Instructions:", instructions);
 
     setRecipeName('');
-    setIngredients(['']);
+    setIngredients([]);
     setInstructions(['']);
   }
 
@@ -55,20 +102,18 @@ function NewRecipe(): JSX.Element {
             onChange={handleRecipeNameChange}
           />
         </div>
-        <div>
-          <label htmlFor="ingredients">Ingredients</label>
-          {
-            ingredients.map((ingredient, i) => (
-              <input 
-                type="text"
-                key={i}
-                value={ingredient}
-                onChange={(e) => handleIngredientChange(e, i)}
-              />
-            ))
-          }
-          <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
-        </div>
+        <h3>Ingredients</h3>
+        <AddIngredient 
+          ingredients={ingredientNames}
+          handleIngredientChange={handleIngredientNameChange}
+          quantities={quantities}
+          handleQuantityChange={handleQuantityChange}
+          units={units}
+          handleUnitChange={handleUnitChange}
+          preps={preps}
+          handlePrepChange={handlePrepChange}
+          handleAddIngredient={handleAddIngredient}
+        />
         <div>
           <label htmlFor="instructions">Instructions</label>
           {
