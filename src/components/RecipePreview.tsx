@@ -37,25 +37,6 @@ function RecipePreview(props: Recipe): JSX.Element {
       <Details className="recipe-time">{props.time} minutes</Details>
       <Details className="recipe-servings">{props.baseServings === 1 ? props.baseServings + ' serving' : props.baseServings + ' servings'}</Details>
     </Preview>
-
-    // <Preview>
-    //   <h3 className='recipe-preview-name'><RecipeLink to={`/recipe/${props.id}`}>{props.title}</RecipeLink></h3>
-    //   <Details className="preview-details">
-    //     <ImageLink className="recipe-image-link" to={`/recipe/${props.id}`}><ImagePreview className="preview-image" src={props.image} alt={props.title} /></ImageLink>
-    //     <div className='recipe-preview-ingrdients'>
-    //       Ingredients
-    //       <IngredientList className='recipe-preview-ingredient-list'>
-    //         {props.ingredients.map((ingredient, index) => (
-    //           <li className='recipe-preview-ingredient' key={index}>{ingredient}</li>
-    //         ))}
-    //       </IngredientList>
-    //     </div>
-    //   </Details>
-    //   <Stats className="recipe-preview-stats">
-    //     <p className='recipe-preview-servings'>Servings: {props.servings}</p>
-    //     <p className='recipe-preview-time'>Total Time: {props.prepTime + props.cookTime} minutes</p>
-    //   </Stats>
-    // </Preview>
   )
 }
 

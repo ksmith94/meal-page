@@ -7,7 +7,8 @@ import recipes from "../DemoData/Recipes";
 interface AddRecipeProps {
   show: boolean,
   onClose: () => void,
-  day: string
+  day: string,
+  onRecipeSelect: (recipe: Recipe) => void
 }
 
 function AddRecipe(props: AddRecipeProps) {
@@ -40,7 +41,7 @@ function AddRecipe(props: AddRecipeProps) {
                 <RecipeList>
                   {recipes.map((recipe, i) => (
                     <li key={i}>
-                      <button>{recipe.title}</button>
+                      <button onClick={() => props.onRecipeSelect(recipe)}>{recipe.title}</button>
                     </li>
                   ))}
                 </RecipeList>

@@ -9,10 +9,26 @@ import RecipePreview from "./RecipePreview";
 function WeeklyMealPlan(): JSX.Element {
   const [show, setShow] = useState(false);
   const [day, setDay] = useState('');
+  const [selectedRecipes, setSeletedRecipes] = useState<(Recipe | null)[]>([
+    null,
+    recipes[1],
+    recipes[2],
+    recipes[3],
+    recipes[3],
+    recipes[4],
+    recipes[4],
+  ]);
 
   const handleAddRecipe = (day: string) => {
     setShow(true);
     setDay(day);
+  }
+
+  const handleRecipeSelection = (recipe: Recipe) => {
+    const updatedSelectedRecipes = [...selectedRecipes];
+    const dayIndex = days.findIndex((d) => d[0] === day);
+    updatedSelectedRecipes[dayIndex] = recipe;
+    setSeletedRecipes(updatedSelectedRecipes);
   }
 
   const days: [string, (Recipe | null)][] = [
@@ -47,8 +63,9 @@ function WeeklyMealPlan(): JSX.Element {
             <Weekday className="weekday" key={index}>
               <Day>{day[0]}</Day>
               {
-                day[1] ? (
-                  <RecipePreview {...day[1]} />
+                selectedRecipes[index] ? (
+                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                  <RecipePreview {...selectedRecipes[index]!} />
                 ) : (
                   <NoRecipe>
                     <CreateARecipe>No recipe for today</CreateARecipe>
@@ -59,7 +76,7 @@ function WeeklyMealPlan(): JSX.Element {
             </Weekday>
           ))
         }
-        <AddRecipe day={day} show={show} onClose={() => setShow(false)}/>
+        <AddRecipe day={day} show={show} onClose={() => setShow(false)} onRecipeSelect={handleRecipeSelection}/>
       </WeekCal>
     </div>
   )
