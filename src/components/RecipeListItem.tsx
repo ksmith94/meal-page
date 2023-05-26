@@ -3,16 +3,27 @@ import { Details } from "./RecipePreview";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function RecipeListItem(props: Recipe): JSX.Element {
+interface RecipeListItemProps {
+  recipe: {
+    baseServings: number,
+    description: string,
+    image?: string,
+    time: number,
+    title: string,
+    _id: string
+  }
+}
+
+function RecipeListItem(props: RecipeListItemProps): JSX.Element {
   return (
     <Preview className="recipes-list-item">
-      <Link to={`/recipe/${props.id}`}>
-        {props.image ? <ImageDisplay src={props.image} alt={props.title}/> : <p>No image :(</p>}
+      <Link to={`/recipe/${props.recipe._id}`}>
+        {props.recipe.image ? <ImageDisplay src={props.recipe.image} alt={props.recipe.title}/> : <p>No image :(</p>}
       </Link>
       <div>
-        <TitleLink to={`/recipe/${props.id}`}><Title>{props.title}</Title></TitleLink>
-        <Details className='recipe-preview-servings'>Servings: {props.baseServings}</Details>
-        <Details className='recipe-preview-time'>Total Time: {props.time} minutes</Details>
+        <TitleLink to={`/recipe/${props.recipe._id}`}><Title>{props.recipe.title}</Title></TitleLink>
+        <Details className='recipe-preview-servings'>Servings: {props.recipe.baseServings}</Details>
+        <Details className='recipe-preview-time'>Total Time: {props.recipe.time} minutes</Details>
       </div>
     </Preview>
   )
