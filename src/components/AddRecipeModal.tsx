@@ -1,8 +1,9 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+// import { faXmark } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import recipes from "../DemoData/Recipes";
+// import recipes from "../DemoData/Recipes";
+import MyCombobox from "./MyComboBox";
 
 interface AddRecipeProps {
   show: boolean,
@@ -12,7 +13,8 @@ interface AddRecipeProps {
 }
 
 function AddRecipe(props: AddRecipeProps) {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | undefined>()
 
   if (!props.show) {
     return null;
@@ -20,22 +22,36 @@ function AddRecipe(props: AddRecipeProps) {
 
   const handleModalClose = () => {
     props.onClose();
-    setOpen(false);
+    // setOpen(false);
   }
 
-  const handleOpen = () => {
-    setOpen(!open);
+  // const handleOpen = () => {
+  //   setOpen(!open);
+  // }
+
+  const handleSubmit = (recipe: Recipe | undefined) => {
+    if (recipe) {
+      props.onRecipeSelect(recipe);
+      handleModalClose();
+    }
+  }
+
+  const handleRecipeSelect = (recipe: Recipe) => {
+    setSelectedRecipe(recipe);
   }
 
   return (
     <Modal className="modal-container" onClick={handleModalClose}>
       <Content className="modal-content" onClick={(e) => e.stopPropagation()}>
         <Header className="modal-header">
-          <h3>Add a recipe for {props.day}</h3>
-          <button onClick={handleModalClose}><FontAwesomeIcon icon={faXmark} /></button>
+          <Title>Add a recipe for {props.day}</Title>
+          {/* <CloseButton onClick={handleModalClose}>
+            <FontAwesomeIcon icon={faXmark} />
+          </CloseButton> */}
         </Header>
         <Body className="modal-body">
-          <div>
+          <MyCombobox onRecipeSelect={handleRecipeSelect}/>
+          {/* <div>
             <ShowRecipesButton onClick={handleOpen}>Recipes</ShowRecipesButton>
               {open ? (
                 <RecipeList>
@@ -48,10 +64,11 @@ function AddRecipe(props: AddRecipeProps) {
               ) : (
                 null
               )}
-          </div>
+          </div> */}
         </Body>
         <Footer className="modal-footer">
-          <button>Submit</button>
+          <FooterButton onClick={handleModalClose}>Cancel</FooterButton>
+          <FooterButton onClick={() => handleSubmit(selectedRecipe)}>Submit</FooterButton>
         </Footer>
       </Content>
     </Modal>
@@ -73,29 +90,56 @@ const Modal = styled.div`
 `
 
 const Content = styled.div`
-  width: 500px;
+  width: fit-content;
   background-color: #fff;
+  padding: 32px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
 `
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center
 `
 
+const Title = styled.h3`
+  flex: 1;
+  text-align: center;
+  margin: 0;
+`
+
+/* const CloseButton = styled.button`
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+` */
+
 const Footer = styled.div`
-  padding: 10px;
+  display: flex;
+  justify-content: end;
+  width: 100%;
+`
+
+const FooterButton = styled.button`
+  margin-left: 4px;
 `
 
 const Body = styled.div`
+  width: fit-content;
+  margin-top: 0;
+  margin-bottom: auto;
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 `
 
-const RecipeList = styled.ul`
-  list-style: none;
-`
+// const RecipeList = styled.ul`
+//   list-style: none;
+// `
 
-const ShowRecipesButton = styled.button`
-  border: none;
-`
+// const ShowRecipesButton = styled.button`
+//   border: none;
+// `
