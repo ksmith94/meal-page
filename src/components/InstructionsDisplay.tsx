@@ -1,19 +1,22 @@
 import React from "react";
-import instructions from "../DemoData/Instructions";
-import { getInstructions } from "./utils";
+// import instructions from "../DemoData/Instructions";
+// import { getInstructions } from "./utils";
 
-function InstructionsDisplay(recipe: Recipe): JSX.Element {
+interface InstructionsDisplayProps {
+  steps: string[]
+}
 
-  const instructionsId = recipe.instructionsId;
-  const instructionsList = getInstructions(instructionsId, instructions);
+function InstructionsDisplay(instructions: InstructionsDisplayProps): JSX.Element {
+
+  // const instructionsList = getInstructions(instructionsId, instructions);
 
 
   return (
     <div>
       {
-      instructionsList ?
+      instructions.steps ?
       <ol>
-        {instructionsList.map((instruction, i) => (
+        {instructions.steps.map((instruction, i) => (
           <li key={i}>{instruction}</li>
         ))}
       </ol> :

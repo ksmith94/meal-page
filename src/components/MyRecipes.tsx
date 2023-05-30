@@ -25,7 +25,6 @@ function MyRecipes(): JSX.Element {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(recipes);
   return (  
     <Wrapper className="my-recipes">
       <RecipesDisplay className="my-recipes-display">

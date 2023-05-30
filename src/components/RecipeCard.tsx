@@ -3,21 +3,47 @@ import styled from "styled-components";
 import IngredientList from "./IngredientList";
 import InstructionsDisplay from "./InstructionsDisplay";
 
-function RecipeCard(recipe: Recipe): JSX.Element {
+export interface RecipeCardProps {
+  title: string,
+  image: string,
+  description: string,
+  baseServings: number,
+  time: number,
+  ingredients: Ingredients[],
+  instructions: {
+    steps: string[]
+  }
+}
+
+interface Ingredients {
+  ingredient: string,
+  unit: string,
+  quantity: string,
+  preparation: string
+}
+
+function RecipeCard({
+  title,
+  image,
+  baseServings,
+  time,
+  ingredients,
+  instructions
+}: RecipeCardProps): JSX.Element {
 
   return (
     <Wrapper>
-      <StyledHeader>{recipe.title}</StyledHeader>
+      <StyledHeader>{title}</StyledHeader>
       <StyledSpan>
         <StyledDiv>
-          <StyledImage src={recipe.image} alt={recipe.title} />
-          <StyledParagraph>{recipe.baseServings} Servings</StyledParagraph>
-          <StyledParagraph>{recipe.time} minutes</StyledParagraph>
+          <StyledImage src={image} alt={title} />
+          <StyledParagraph>{baseServings} Servings</StyledParagraph>
+          <StyledParagraph>{time} minutes</StyledParagraph>
         </StyledDiv>
-        <IngredientList {...recipe} />
+        <IngredientList ingredients={ingredients} />
       </StyledSpan>
         <StyledParagraph>Steps:</StyledParagraph>
-        <InstructionsDisplay {...recipe} />
+        <InstructionsDisplay {...instructions} />
     </Wrapper>
   )
 }
