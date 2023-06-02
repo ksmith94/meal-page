@@ -8,7 +8,7 @@ import RecipePage from './components/RecipePage';
 import SearchResults from './components/SearchResults';
 import Home from './HomePage';
 import NewRecipe from './components/NewRecipe';
-import Form from './components/Form';
+import CreateMealPlan from './components/CreateMealPlan';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <Route path="/search/:term" element={<SearchResults />} />
         <Route path="/ingredients" element={<IngredientList />} />
         <Route path="/create-a-recipe" element={<NewRecipe />} />
-        <Route path="/form" element={<Form />} />
+        <Route path="/create-meal-plan" element={<CreateMealPlan />} />
       </Routes>
     </Router>
   );

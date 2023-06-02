@@ -136,3 +136,26 @@ export function getInstructions(id: number, instructions: Instructions[]) {
     }
   }
 }
+
+/**
+ * Helper function to capitalize the first letter of a given string
+ * 
+ * @param string 
+ * @returns 
+ */
+export function capitalizeFirstLetterOfString(string: string) {
+  return string.charAt(0)?.toUpperCase() + string.slice(1);
+}
+
+/**
+ * Helper function that gets the date for the beginning (Sunday) of the current week
+ * 
+ * @returns 
+ */
+export function getSunday() {
+  const curr = new Date(); // get current date
+  const first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+  
+  const firstday = new Date(curr.setDate(first)).toUTCString();
+  return firstday;
+}

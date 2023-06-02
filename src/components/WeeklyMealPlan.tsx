@@ -1,6 +1,7 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import recipes from "../DemoData/Recipes";
 import AddRecipe from "./AddRecipeModal";
@@ -78,6 +79,7 @@ function WeeklyMealPlan(): JSX.Element {
         }
         <AddRecipe day={day} show={show} onClose={() => setShow(false)} onRecipeSelect={handleRecipeSelection}/>
       </WeekCal>
+      <Link to={`/create-meal-plan`}>Create a Meal Plan for this week!</Link>
     </div>
   )
 }
