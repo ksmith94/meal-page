@@ -156,6 +156,22 @@ export function getSunday() {
   const curr = new Date(); // get current date
   const first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
   
-  const firstday = new Date(curr.setDate(first)).toUTCString();
+  const firstday = new Date(curr.setDate(first)).toUTCString().slice(0, 17);
   return firstday;
+}
+
+/**
+ * Helper function to display the date of the current week
+ * 
+ * @returns 
+ */
+export function getWeek() {
+  const sundayDate = new Date();
+  const saturdayDate = new Date();
+  const day = sundayDate.getDay();
+  const sundayDiff = sundayDate.getDate() - day;
+  const saturdayDiff = saturdayDate.getDate() + 7 - day;
+  const sunday = new Date(sundayDate.setDate(sundayDiff)).toLocaleDateString('us-EN', {month: 'long', day: 'numeric'});
+  const saturday = new Date(saturdayDate.setDate(saturdayDiff)).toLocaleDateString('us-EN', {month: 'long', day: 'numeric'});
+  return sunday + ' – ' + saturday;
 }

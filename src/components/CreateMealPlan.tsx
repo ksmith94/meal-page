@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { client } from "../lib/sanity/client";
-import { capitalizeFirstLetterOfString, getSunday } from "./utils";
+import { capitalizeFirstLetterOfString, getSunday, getWeek } from "./utils";
 
 type Indexable = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,7 +57,6 @@ function CreateMealPlan(): JSX.Element {
         saturday: updatedMealPlan.saturday,
       };
 
-      console.log(mealPlanWithReferences)
 
       const newMealPlan = await client.create(mealPlanWithReferences);
 
@@ -75,10 +74,6 @@ function CreateMealPlan(): JSX.Element {
 
     setMealPlan(updatedMealPlan);
   }
-
-  useEffect(() => {
-    console.log(mealPlan);
-  }, [mealPlan])
 
   const days = Object.keys(mealPlan);
   const displayDays = days.map(day => capitalizeFirstLetterOfString(day));
@@ -104,25 +99,28 @@ function CreateMealPlan(): JSX.Element {
 
   return (
     <Wrapper>
+      <CreateRecipeHeader>{`Create a meal plan for the week of ${getWeek()}`}</CreateRecipeHeader>
+      <SubHeader>For each day, select a recipe to make. When you&apos;re finished, click the &ldquo;Create Meal Plan&ldquo; button to submit it.</SubHeader>
       {
         recipes ?
-        <form onSubmit={handleCreateMealPlan}>
+        <CreateRecipeForm onSubmit={handleCreateMealPlan}>
         {
           displayDays.map((day, i) => (
-            <div key={i}>
+            <Weekday key={i}>
               <label>{day}</label>
-              <select name='recipes' onChange={(e) => handleUpdateMeal(day.toLowerCase(), e.target.value)}>
+              <RecipeSelect name='recipes' onChange={(e) => handleUpdateMeal(day.toLowerCase(), e.target.value)}>
                 <option value=''>Select a Recipe</option>
                 {
                   recipes.map((recipe, i) => (
                     <option key={i} value={recipe.title}>{recipe.title}</option>
                   ))
                 }
-              </select>
-            </div>
-          ))}
-          <button type='submit'>Create Meal Plan</button>
-      </form> :
+              </RecipeSelect>
+            </Weekday>
+          ))
+        }
+        <CreateRecipeButton type='submit'>Create Meal Plan</CreateRecipeButton>
+      </CreateRecipeForm> :
       <p>Error loading recipes</p>
       }
     </Wrapper>
@@ -130,7 +128,52 @@ function CreateMealPlan(): JSX.Element {
 }
 
 const Wrapper = styled.div`
+  margin: auto;
   margin-top: 112px;
+  width: 60%;
+  background-color: hsl(217, 40%, 80%);
+  padding: 24px;
+  border-radius: 8px;
+  border: 2px solid hsl(217, 40%, 20%);
+  color: hsl(217, 40%, 20%);
+  font-family: “Lexend Deca”, “Helvetica”, sans-serif;
+`
+
+const CreateRecipeHeader = styled.h3`
+  margin: auto;
+  margin-bottom: 8px;
+  width: fit-content;
+  font-size: 20px;
+`
+
+const SubHeader = styled.p`
+  width: 80%;
+  margin: auto;
+  margin-bottom: 16px;
+`
+
+const CreateRecipeForm = styled.form`
+  width: 80%;
+  margin: auto;
+  display: grid;
+`
+
+const Weekday = styled.div`
+  width: fit-content;
+  margin: 8px auto;
+  display: grid;
+  grid-template-columns: 100px auto;
+`
+
+const RecipeSelect = styled.select`
+  width: fit-content;
+  background: hsl(217, 30%, 90%);
+  color: hsl(217, 40%, 20%);
+`
+
+const CreateRecipeButton = styled.button`
+  margin-top: 12px;
+  justify-self: end;
 `
 
 export default CreateMealPlan;

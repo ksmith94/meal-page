@@ -1,11 +1,38 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import recipes from "../DemoData/Recipes";
+import { client } from "../lib/sanity/client";
 import AddRecipe from "./AddRecipeModal";
 import RecipePreview from "./RecipePreview";
+import { capitalizeFirstLetterOfString, getSunday, getWeek } from "./utils";
+
+const weekdays = [
+  'sunday',
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday'
+];
+
+interface DisplayRecipe {
+  title: string,
+  image: string,
+  description: string,
+  time: number,
+  baseServings: number,
+  instructions: object,
+  _id: string
+}
+
+interface WeeklyPlan {
+  [key: string]: DisplayRecipe
+}
+
 
 function WeeklyMealPlan(): JSX.Element {
   const [show, setShow] = useState(false);
@@ -19,6 +46,9 @@ function WeeklyMealPlan(): JSX.Element {
     recipes[4],
     recipes[4],
   ]);
+  const [mealPlan, setMealPlan] = useState<WeeklyPlan>();
+  // const [weekDays, setWeekDays] = useState<string[]>([]);
+  const week = getWeek();
 
   const handleAddRecipe = (day: string) => {
     setShow(true);
@@ -42,31 +72,46 @@ function WeeklyMealPlan(): JSX.Element {
     ['Saturday', recipes[4]]
   ];
 
-  function getWeek() {
-    const sundayDate = new Date();
-    const saturdayDate = new Date();
-    const day = sundayDate.getDay();
-    const sundayDiff = sundayDate.getDate() - day;
-    const saturdayDiff = saturdayDate.getDate() + 7 - day;
-    const sunday = new Date(sundayDate.setDate(sundayDiff)).toLocaleDateString('us-EN', {month: 'long', day: 'numeric'});
-    const saturday = new Date(saturdayDate.setDate(saturdayDiff)).toLocaleDateString('us-EN', {month: 'long', day: 'numeric'});
-    return sunday + ' – ' + saturday;
-  }
+  useEffect(() => {
+    const fetchMealPlan = async () => {
+      const currentWeek = getSunday();
+      try {
+        const res = await client.fetch(
+          `*[_type == "weeklyPlan" && week == $week]{
+            sunday->{title, image, description, time, baseServings, instructions, _id},
+            monday->{title, image, description, time, baseServings, instructions, _id},
+            tuesday->{title, image, description, time, baseServings, instructions, _id},
+            wednesday->{title, image, description, time, baseServings, instructions, _id},
+            thursday->{title, image, description, time, baseServings, instructions, _id},
+            friday->{title, image, description, time, baseServings, instructions, _id},
+            saturday->{title, image, description, time, baseServings, instructions, _id}
+          }`,
+          { week: currentWeek}
+        )
+        
+        setMealPlan(res[0]);
+      } catch (err) {
+        console.error(err);
+      }
+    }
 
-  const week = getWeek();
+    fetchMealPlan();
+    // setWeekDays(Object.keys(mealPlan).filter((key) => key.includes('day')));
+  }, [])
 
   return (
     <div>
       <Week>Your meals for the week of {week}</Week>
       <WeekCal className="weekly-plan">
         {
-          days.map((day, index) => (
+          mealPlan ?
+          weekdays.map((day, index) => (
             <Weekday className="weekday" key={index}>
-              <Day>{day[0]}</Day>
+              <Day>{capitalizeFirstLetterOfString(day)}</Day>
               {
-                selectedRecipes[index] ? (
+                mealPlan[day] ? (
                   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                  <RecipePreview {...selectedRecipes[index]!} />
+                  <RecipePreview {...mealPlan[day]} />
                 ) : (
                   <NoRecipe>
                     <CreateARecipe>No recipe for today</CreateARecipe>
@@ -74,6 +119,15 @@ function WeeklyMealPlan(): JSX.Element {
                   </NoRecipe>
                 )
               }
+            </Weekday>
+          )) : 
+          weekdays.map((weekday, i) => (
+            <Weekday className="weekday" key={i}>
+              <Day>{capitalizeFirstLetterOfString(weekday)}</Day>
+              <NoRecipe>
+                <CreateARecipe>No recipe for today</CreateARecipe>
+                <RecipeButton onClick={() => handleAddRecipe(day[0])}>Add one!<PlusIcon icon={faPlus} /></RecipeButton>
+              </NoRecipe>
             </Weekday>
           ))
         }

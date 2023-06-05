@@ -4,7 +4,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function RecipePreview(props: Recipe): JSX.Element {
+interface RecipePreviewProps {
+  _id: string,
+  image: string,
+  title: string,
+  time: number,
+  baseServings: number,
+  description: string,
+
+}
+
+function RecipePreview(props: RecipePreviewProps): JSX.Element {
 
   // function parseIngredient(ingredient: Ingredient) {
   //   let output = '';
@@ -24,14 +34,16 @@ function RecipePreview(props: Recipe): JSX.Element {
 
   return (
     <Preview className="recipe-preview">
-      <Link to={`/recipe/${props.id}`}>
-        {
-          props.image ? 
-          <Image src={props.image} alt={props.title} className="recipe-image" /> :
-          <StyledIcon icon={faCameraAlt} />
-        }
+      <Link to={`/recipe/${props._id}`}>
+        <ImageWrapper className="recipe-image" image={props.image}>
+          {
+            props.image ? 
+            null :
+            <StyledIcon icon={faCameraAlt} />
+            }
+        </ImageWrapper>
       </Link>
-      <TitleLink to={`/recipe/${props.id}`}>
+      <TitleLink to={`/recipe/${props._id}`}>
         <Title className="recipe-title">{props.title}</Title>
       </TitleLink>
       <Details className="recipe-time">{props.time} minutes</Details>
@@ -65,10 +77,13 @@ const Title = styled.h3`
   color: hsl(217, 40%, 20%);
 `
 
-const Image = styled.img`
+const ImageWrapper = styled.div<{ image: string}>`
   border-radius: 10px 10px 0 0;
   width: 100%;
   height: 67%;
+  background-image: ${(props) => `url(${props.image})`};
+  background-size: cover;
+  background-position: center;
 `
 
 const TitleLink = styled(Link)`
