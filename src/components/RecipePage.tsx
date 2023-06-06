@@ -21,7 +21,7 @@ function RecipePage() {
         "ingredient": ingredient->name,
         "quantity": quantity->quantity,
         "unit": unit->unit,
-        "preparation": preparation->preparation
+        "display": ingredientDisplay
       }
     }`
   );

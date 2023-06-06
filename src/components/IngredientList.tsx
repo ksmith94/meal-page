@@ -1,12 +1,12 @@
 import React from "react";
 // import styled from "styled-components";
-import { parseIngredients } from "./utils";
+// import { parseIngredients } from "./utils";
 
 export interface IngredientListProps {
   ingredient: string,
   quantity: string,
   unit: string,
-  preparation: string
+  display: string
 }
 
 function IngredientList({ ingredients }: {ingredients: IngredientListProps[]}): JSX.Element {
@@ -17,7 +17,7 @@ function IngredientList({ ingredients }: {ingredients: IngredientListProps[]}): 
       <ul>
         {
           ingredients.map((ingredient, i) => (
-            <li key={i}>{parseIngredients(ingredient)}</li>
+            <li key={i}>{ingredient.display}</li>
           ))
         }
       </ul>

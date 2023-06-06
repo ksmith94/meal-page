@@ -19,7 +19,7 @@ interface Ingredients {
   ingredient: string,
   unit: string,
   quantity: string,
-  preparation: string
+  display: string
 }
 
 function RecipeCard({
