@@ -175,3 +175,59 @@ export function getWeek() {
   const saturday = new Date(saturdayDate.setDate(saturdayDiff)).toLocaleDateString('us-EN', {month: 'long', day: 'numeric'});
   return sunday + ' – ' + saturday;
 }
+
+interface IngredientsProps {
+  [key: string]: IngredientListProps[],
+}
+
+/**
+ * 
+ * @param ingredients 
+ * @returns 
+ */
+export function getIngredientList(ingredients?: IngredientsProps) {
+  const days = [
+    'sunday', 
+    'monday', 
+    'tuesday', 
+    'wednesday', 
+    'thursday', 
+    'friday', 
+    'saturday'
+  ];
+  const result = [];
+
+  if (!ingredients) {
+    return [];
+  }
+
+  for (const day of days) {
+    if (day in ingredients) {
+      const dayIngredients = extractIngredientNames(ingredients[day]);
+      result.push(...dayIngredients)
+    }
+  }
+
+  return result;
+}
+
+interface IngredientListProps {
+  ingredient: string,
+  quantity: string,
+  unit?: string
+}
+
+/**
+ * 
+ * @param ingredientList 
+ * @returns 
+ */
+function extractIngredientNames(ingredientList: IngredientListProps[]) {
+  const result = [];
+
+  for (const ingredient of ingredientList) {
+    result.push(ingredient.ingredient);
+  }
+
+  return result;
+}

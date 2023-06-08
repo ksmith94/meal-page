@@ -46,29 +46,14 @@ function RecipePage() {
         const { result } = await res.json();
 
         const [fullRecipe] = result;
-        // const { 
-        //   baseServings, 
-        //   description, 
-        //   image, 
-        //   ingredients, 
-        //   instructions, 
-        //   time, 
-        //   title 
-        // } = fullRecipe;
-
-        // const recipe = {title, description, image, baseServings, time};
-        // console.log(recipe, ingredients, instructions);
+      
         setRecipe(fullRecipe);
-        // setIngredients(ingredients);
-        // setInstructions(instructions);
-
       } catch (error) {
         console.error('Error fetching recipe: ', error);
       }
     }
 
     fetchRecipe();
-    // console.log(recipe);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

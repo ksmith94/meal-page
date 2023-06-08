@@ -8,7 +8,6 @@ function CreateIngredient() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    console.log(e);
     
     if (userInput.length === 0) {
       setError('Ingredient is a required field')

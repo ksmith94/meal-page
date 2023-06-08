@@ -18,7 +18,6 @@ function SearchResults(): JSX.Element {
     fetchRecipes();
   }, [term]);
 
-  console.log(recipes?.results);
   return (
     <div>
       <h2>Results for {term}</h2>

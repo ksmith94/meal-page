@@ -15,7 +15,6 @@ function RecipeStepForm(): JSX.Element {
       setSteps(updatedSteps);
       setCurrentStep('');
     }
-    console.log(currentStep);
   }
 
   // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
