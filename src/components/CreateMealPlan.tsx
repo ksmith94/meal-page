@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { client } from "../lib/sanity/client";
 import { capitalizeFirstLetterOfString, getSunday, getWeek } from "./utils";
@@ -9,6 +10,7 @@ type Indexable = {
 }
 
 function CreateMealPlan(): JSX.Element {
+  const navigate = useNavigate();
   const [recipes, setRecipes] = useState<(Recipe[] | null)>([]);
   const [mealPlan, setMealPlan] = useState<Indexable>({
     sunday: null,
@@ -60,6 +62,8 @@ function CreateMealPlan(): JSX.Element {
 
       const newMealPlan = await client.create(mealPlanWithReferences);
 
+      navigate(`/your-meal-plan/${newMealPlan._id}`)
+
       console.log('Weekly plan created successfully!', newMealPlan);
     } catch (err) {
       console.error(err);
@@ -97,6 +101,20 @@ function CreateMealPlan(): JSX.Element {
     fetchRecipes();
   }, []);
 
+  // useEffect(() => {
+  //   let timer: NodeJS.Timeout;
+
+  //   if (showSuccessMessage) {
+  //     timer = setTimeout(() => {
+  //       setShowSuccessMessage(false);
+  //     }, 3000)
+  //   }
+
+  //   return () => {
+  //     clearTimeout(timer);
+  //   }
+  // }, [showSuccessMessage])
+
   return (
     <Wrapper>
       <CreateRecipeHeader>{`Create a meal plan for the week of ${getWeek()}`}</CreateRecipeHeader>
@@ -123,6 +141,7 @@ function CreateMealPlan(): JSX.Element {
       </CreateRecipeForm> :
       <p>Error loading recipes</p>
       }
+      {/* {showSuccessMessage && <p>Meal Plan Created!</p>} */}
     </Wrapper>
   )
 }
