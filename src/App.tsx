@@ -9,6 +9,7 @@ import SearchResults from './components/SearchResults';
 import Home from './HomePage';
 import CreateMealPlan from './components/CreateMealPlan';
 import YourMealPlan from './components/YourMealPlan';
+import CreateRecipe from './components/CreateRecipe';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/ingredients" element={<IngredientList />} />
         <Route path="/create-meal-plan" element={<CreateMealPlan />} />
         <Route path="/your-meal-plan/:id" element={<YourMealPlan />} />
+        <Route path="/create-a-recipe" element={<CreateRecipe />} />
       </Routes>
     </Router>
   );
