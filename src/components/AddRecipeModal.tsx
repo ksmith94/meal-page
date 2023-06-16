@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-// import { faXmark } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-// import recipes from "../DemoData/Recipes";
 import MyCombobox from "./MyComboBox";
 
 interface AddRecipeProps {

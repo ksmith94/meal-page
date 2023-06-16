@@ -14,41 +14,7 @@ interface AddIngredientProps {
 }
 
 function AddIngredient(props: AddIngredientProps): JSX.Element {
-  // const [ingredients, setIngredients] = useState<string[]>(['']);
-  // const [quantities, setQuantities] = useState<string[]>(['']);
-  // const [units, setUnits] = useState<string[]>(['']);
-  // const [preps, setPreps] = useState<string[]>(['']);
-
-  // const handleIngredientChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
-  //   const updatedIngredients = [...ingredients];
-  //   updatedIngredients[i] = event.target.value;
-  //   setIngredients(updatedIngredients);
-  // }
-
-  // const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
-  //   const updatedQuantities = [...quantities];
-  //   updatedQuantities[i] = event.target.value;
-  //   setQuantities(updatedQuantities);
-  // }
-
-  // const handleUnitChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
-  //   const updatedUnits = [...units];
-  //   updatedUnits[i] = event.target.value;
-  //   setUnits(updatedUnits);
-  // }
-
-  // const handlePrepChange = (event: React.ChangeEvent<HTMLInputElement>, i: number) => {
-  //   const updatedPreps = [...preps];
-  //   updatedPreps[i] = event.target.value;
-  //   setPreps(updatedPreps);
-  // }
-
-  // const handleAddIngredient = () => {
-  //   setIngredients([...ingredients, ""]);
-  //   setQuantities([...quantities, ""]);
-  //   setUnits([...units, ""]);
-  //   setPreps([...preps, ""]);
-  // }
+  
 
   const {
     ingredients, 
@@ -61,6 +27,8 @@ function AddIngredient(props: AddIngredientProps): JSX.Element {
     handlePrepChange,
     handleAddIngredient
   } = props;
+
+
 
   return (
     <Wrapper>
@@ -75,6 +43,7 @@ function AddIngredient(props: AddIngredientProps): JSX.Element {
           />
         ))
       }
+      
       <label htmlFor="quantity">Quantity</label>
       {
         quantities.map((quantity, i) => (

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { client } from "../lib/sanity/client";
+import CreateIngredient from "./CreateIngredient";
 import { Ingredient } from './CreateRecipe'
 
 interface AddIngredientsProps {
@@ -6,13 +8,31 @@ interface AddIngredientsProps {
 }
 
 function AddIngredients({ onSubmit }: AddIngredientsProps): JSX.Element {
+  const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('');
   const [unit, setUnit] = useState('');
   const [display, setDisplay] = useState('');
   const [recipeIngredients, setRecipeIngredients] = useState<Ingredient[]>([]);
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
+  useEffect(() => {
+    const fetchIngredients = async () => {
+      try {
+        const res = await client.fetch(`
+          *[_type == 'ingredient']{
+            name
+          }
+        `);
 
+        setIngredients(res);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchIngredients()
+  }, []);
 
   const handleAddIngredient = () => {
     const newIngredient = {
@@ -38,13 +58,17 @@ function AddIngredients({ onSubmit }: AddIngredientsProps): JSX.Element {
       <h4>Add Ingredients</h4>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name</label>
-          <input 
-            type='text'
-            id='name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <label htmlFor="name">Ingredient</label>
+          <select name='ingredients'>
+            <option value=''>Select an Ingredient</option>
+            {
+              ingredients.map((ingredient, i) => (
+                <option key={i} value={ingredient.name}>{ingredient.name}</option>
+              ))
+            }
+          </select>
+          <span>Don&apos;t see the ingredient you want?</span>
+      <button type='button' onClick={() => setShow(true)}>Add it!</button>
         </div>
         <div>
           <label htmlFor="quantity">Quantity</label>
@@ -85,6 +109,7 @@ function AddIngredients({ onSubmit }: AddIngredientsProps): JSX.Element {
           ))
         }
       </ul>
+      <CreateIngredient show={show} onClose={() => setShow(false)}/>
     </div>
   )
 }
